@@ -14,10 +14,20 @@ $(document).ready(function() {
 		navigator.mozGetUserMedia ||
 		navigator.msGetUserMedia
 	);
+		photo        = document.querySelector('#photo'),
+		startbutton  = document.querySelector('#startbutton'),
+		width = 320,
+		height = 0;
+
+	navigator.getMedia = ( navigator.getUserMedia ||
+						navigator.webkitGetUserMedia ||
+						navigator.mozGetUserMedia ||
+						navigator.msGetUserMedia);
 
 	navigator.getMedia(
 		{
 	  		video: true,
+	  		audio: false
 		},
 		function(stream) {
   			if (navigator.mozGetUserMedia) {
@@ -28,6 +38,10 @@ $(document).ready(function() {
 			}
 			video.play();
 			$("#startbutton").css("display", "block");
+			var vendorURL = window.URL || window.webkitURL;
+			video.src = vendorURL.createObjectURL(stream);
+			}
+			video.play();
 		},
 		function(err) {
 			console.log("An error occured! " + err);
@@ -39,6 +53,8 @@ $(document).ready(function() {
 			height = video.videoHeight / (video.videoWidth/width);
 			video.setAttribute('width', width);
 			video.setAttribute('height', height);
+			canvas.setAttribute('width', width);
+			canvas.setAttribute('height', height);
   			streaming = true;
 		}
 	}, false);
@@ -69,6 +85,7 @@ $(document).ready(function() {
 		$("#canvas").css("display", "none");
 		$("#startbutton").css("display", "block");
 		$("#backbutton").css("display", "none");
+		photo.setAttribute('src', data);
 	}
 
 	startbutton.addEventListener('click', function(ev){
