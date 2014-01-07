@@ -1,0 +1,4 @@
+Photobooth
+==========
+
+Techfair Photobooth Software
