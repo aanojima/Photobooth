@@ -9,18 +9,29 @@
 	<div id="header">
 		<image id="logo" src="images/photobooth_logo.png"></image>
 	</div>
+	<!-- TODO: Edit Bar Left -->
 	<div id="content">
 		<div id="camera">
 			<video id="video" autoplay></video>
 			<canvas id="canvas"></canvas>
+			<div id="white_flash"></div>
+			<div id="email_form">
+			<form>
+				<label for="email">E-mail</label>
+				<input type="text" id="email" name="email">		
+				<button id="send_email">Send</button>
+			</form>
+			</div>
+			<img id="count3" class="count" src="images/3.png"></img>
+			<img id="count2" class="count" src="images/2.png"></img>
+			<img id="count1" class="count" src="images/1.png"></img>
 		</div>
-		<button id="startbutton">Take photo</button>
-		<button id="backbutton">Back</button>
 	</div>
-	<div id="footer"></div>
-	<video id="video" autoplay></video>
-	<button id="startbutton">Take photo</button>
-	<canvas id="canvas"></canvas>
-	<img id="photo">
+	<!-- TODO: Edit Bar Right -->
+	<div id="footer">
+		<button id="start_button" class="pre-photo_button">Take photo</button>
+		<button id="back_button" class="post-photo_button">Back</button>
+		<button id="send_button" class="post-photo_button">Send</button>
+	</div>
 </body>
 </html>
