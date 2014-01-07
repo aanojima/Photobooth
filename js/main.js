@@ -6,7 +6,6 @@ $(document).ready(function() {
 		startbutton  = document.querySelector('#start_button'),
 		backbutton   = document.querySelector("#back_button"),
 		sendbutton   = document.querySelector("#send_button"),
-		editbutton   = document.querySelector("#edit_button"),
 		sendemail    = document.querySelector("#send_email"),
 		width = $("#video").width(),
 		height = $("#video").height(),
@@ -70,7 +69,6 @@ $(document).ready(function() {
 		$("#start_button").css("display", "none");
 		$("#back_button").css("display", "inline-block");
 		$("#send_button").css("display", "inline-block");
-		$("#edit_button").css("display", "inline-block");
 		canvas.width = width;
 		canvas.height = height;
 		canvas.getContext('2d').drawImage(video, 0, 0, width, height);
