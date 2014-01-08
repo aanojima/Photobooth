@@ -122,6 +122,10 @@ $(document).ready(function() {
 	$('#modal-email').on('hidden.bs.modal', function (e) {
   		$('#emailAlert').css('display', 'none');
 	});
+	$('#email_form').submit(function(){
+		sendEmail();
+		return false;
+	})
 
 	startbutton.addEventListener('click', function(ev){
 		countdown();

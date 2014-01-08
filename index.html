@@ -27,7 +27,7 @@
 			        <h4 class="modal-title">Enter an email address to send the photo to.</h4>
 			      </div>
 			      <div class="modal-body">
-			        <form role="form">
+			        <form role="email_form">
 			        	<div class="form-group">
 				        	<label for="exampleInputEmail1">Email address</label>
 	    					<input type="email" id="email" class="form-control" placeholder="Enter email">
@@ -59,27 +59,5 @@
 		<button id="send_button" class="post-photo_button btn btn-primary btn-lg">Email</button>
 	</div>
 	<script src="js/bootstrap.min.js"></script>
-	<div id="fb-root"></div>
-	<script>
-	  window.fbAsyncInit = function() {
-	    // init the FB JS SDK
-	    FB.init({
-	      appId      : '1446347152251133',                        // App ID from the app dashboard
-	      status     : true,                                 // Check Facebook Login status
-	      xfbml      : true                                  // Look for social plugins on the page
-	    });
-
-	    // Additional initialization code such as adding Event Listeners goes here
-	  };
-
-	  // Load the SDK asynchronously
-	  (function(d, s, id){
-	     var js, fjs = d.getElementsByTagName(s)[0];
-	     if (d.getElementById(id)) {return;}
-	     js = d.createElement(s); js.id = id;
-	     js.src = "//connect.facebook.net/en_US/all/debug.js";
-	     fjs.parentNode.insertBefore(js, fjs);
-	   }(document, 'script', 'facebook-jssdk'));
-	</script>
 </body>
 </html>
