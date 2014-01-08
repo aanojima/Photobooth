@@ -63,12 +63,11 @@ $(document).ready(function() {
 
 		// Capturing Image from Webcam
 		$("#video").css('display', 'none');
-		$("#canvas").css('display', 'block');
-		$("#white_flash").fadeIn(50, function(){$("#white_flash").fadeOut(200)})
+		$("#canvas").fadeIn(1000);
+		$("#white_flash").fadeIn(200, function(){$("#white_flash").fadeOut(200)})
 		// TODO: Show Edit Menu
-		$("#start_button").css("display", "none");
-		$("#back_button").css("display", "inline-block");
-		$("#send_button").css("display", "inline-block");
+		$(".pre-photo_button").css("display", "none");
+		$(".post-photo_button").css("display", "inline-block").fadeIn(200);
 		canvas.width = width;
 		canvas.height = height;
 		canvas.getContext('2d').drawImage(video, 0, 0, width, height);
@@ -79,19 +78,30 @@ $(document).ready(function() {
 	function goBack() {
 		$("#video").css("display", "block");
 		$("#canvas").css("display", "none");
-		$("#start_button").css("display", "block");
-		$("#back_button").css("display", "none");
-		$("#send_button").css("display", "none");
-		$("#email_form").css("display", "none");
+		$(".pre-photo_button").css("display", "block");
+		$(".post-photo_button").css("display", "none");
+		$("#email_form").modal('hide');
 		// TODO: Hide Edit Menu
 	}
 
 	function inputEmail() {
-		$("#email_form").toggle();
+		$("#modal-email").modal('show');
+		// $('body').append($('<div id="lightbox-shadow"/>'))
+	}
+
+	function isEmail(email){
+		var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+		return regex.test(email);
 	}
 
 	function sendEmail() {
 		var email = $("#email").val();
+		console.log("email is"+email);
+		if (!isEmail(email) || email == '' || email == null){
+			$('#emailAlert').css('display', 'block');
+			return;
+		} 
+		$("#modal-email").modal('hide');
 		console.log(email,data);
 		$.ajax({
 			type : "POST",
@@ -99,10 +109,19 @@ $(document).ready(function() {
 			data : {image : data, address : email}, 
 			success : function(response){
 				console.log(response);
-				$("#email_form").css("display", "none");
+				//add notification
+				// $("#email_form").css("display", "none");
+				// $('#lightbox-shadow').hide();
+			},
+			error: function(response){
+				console.log(response);
 			}
 		});
 	}
+
+	$('#modal-email').on('hidden.bs.modal', function (e) {
+  		$('#emailAlert').css('display', 'none');
+	});
 
 	startbutton.addEventListener('click', function(ev){
 		countdown();
@@ -116,7 +135,7 @@ $(document).ready(function() {
 
 	sendbutton.addEventListener('click', function(ev){
 		inputEmail();
-		ev.preventDefault
+		ev.preventDefault();
 	}, false);
 
 	sendemail.addEventListener('click', function(ev){

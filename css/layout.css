@@ -22,28 +22,62 @@ body {
 	display : none;
 	width : 100%;
 	margin : auto;
+	border:15px solid white;
 }
+
+#camera {
+	width : 65%;
+	margin : auto;
+	position : relative;
+}
+
+
+/* Button Styles 
+====================
+*/
 
 .pre-photo_button {
 	height: 50px;
 	width : 200px;
 	display : none;
 	margin : auto;
+	margin-top: 10px;
 }
 
 .post-photo_button {
-	height: 50px;
-	width : 200px;
+	/*height: 50px;*/
+	width : 110px;
 	display : none;
+	margin-top: 10px;
+	margin-right:20px;
+}
+#facebook_button {
+	border:none;
+	color:white;
+	background-color: #3b5998;
+/*	background-image: -webkit-gradient(linear,left top,left bottom,from(#6d84b3),to(#3c5a98));
+	background-image: -webkit-linear-gradient(#6d84b3,#3c5a98);*/
+}
+#facebook_button:hover {
+	background-color: #374A77;
 }
 
-#camera {
-	width : 50%;
-	margin : auto;
-	position : relative;
+#twitter_button {
+	border:none;
+	color:white;
+	background-color: #6fdbff;
+/*	background-image: -webkit-gradient(linear,left top,left bottom,from(#6fdbff),to(#17aee5));
+	background-image: -webkit-linear-gradient(#6fdbff,#17aee5);*/
+}
+#twitter_button:hover {
+	background-color: #59B1CE;
 }
 
-#email_form {
+/* Email form 
+===============
+*/
+
+/*#email_form {
 	display : none;
 	text-align: center;
 	position : absolute;
@@ -53,15 +87,28 @@ body {
 	margin-left : -25%;
 	height : 50%;
 	background-color: gray;
+	border-radius: 5px;
+	z-index: 1001;
+}*/
+
+#modal-email {
+	top:25%;
 }
+#modal-email .alert {
+	display: none;
+}
+
+
 
 #white_flash {
 	display : none;
 	position : absolute;
 	top : 0px;
+	left:0px;
 	width : 100%;
 	height : 100%;
 	background-color: white;
+	z-index: 1001;
 }
 
 .count {
