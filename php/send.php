@@ -30,11 +30,14 @@ if (isset($_POST["image"]) && isset($_POST["address"]) && !empty($_POST["image"]
 	//Set the subject line
 	$mail->Subject = '[Techfair Photobooth]';
 
-	//Read an HTML message body from an external file, convert referenced images to embedded, convert HTML into a basic plain-text alternative body
-	$mail->MsgHTML('<h2>Techfair Photobooth</h2><p>Here is your picture</p>', dirname(__FILE__));
+	//Embed photo in email
+	$mail->AddEmbeddedImage($filename, 'photo', $filename);
 
-	//Replace the plain text body with one created manually
-	$mail->AltBody = 'This is the plain text portion of the email.';
+	//Read an HTML message body from an external file, convert referenced images to embedded, convert HTML into a basic plain-text alternative body
+	$message = '<h2>Thanks for stopping by the Techfair Photobooth!</h2>';
+	$mail->AltBody = $message;
+	$message.='<p>Here is your picture:</p><img alt="picture" src="cid:photo" width="400"/>';
+	$mail->Body = $message;
 
 	//Attach an image file
 	$mail->AddAttachment($filename);
