@@ -20,7 +20,7 @@
 
 			<!-- modal form to send email -->
 			<div class="modal fade" id="modal-email">
-			  <div class="modal-dialog" id="email_form_2">
+			  <div class="modal-dialog" id="email_form">
 			    <div class="modal-content">
 			      <div class="modal-header">
 			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -33,7 +33,6 @@
 	    					<input type="email" id="email" class="form-control" placeholder="Enter email">
     					</div>
     					<div class="alert alert-danger fade in" id="emailAlert">
-						  <!-- <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> -->
 						  <strong>Oops!</strong> Please enter a valid email address.
 						</div>
     					<div class="modal-footer">
@@ -60,5 +59,27 @@
 		<button id="send_button" class="post-photo_button btn btn-primary btn-lg">Email</button>
 	</div>
 	<script src="js/bootstrap.min.js"></script>
+	<div id="fb-root"></div>
+	<script>
+	  window.fbAsyncInit = function() {
+	    // init the FB JS SDK
+	    FB.init({
+	      appId      : '1446347152251133',                        // App ID from the app dashboard
+	      status     : true,                                 // Check Facebook Login status
+	      xfbml      : true                                  // Look for social plugins on the page
+	    });
+
+	    // Additional initialization code such as adding Event Listeners goes here
+	  };
+
+	  // Load the SDK asynchronously
+	  (function(d, s, id){
+	     var js, fjs = d.getElementsByTagName(s)[0];
+	     if (d.getElementById(id)) {return;}
+	     js = d.createElement(s); js.id = id;
+	     js.src = "//connect.facebook.net/en_US/all/debug.js";
+	     fjs.parentNode.insertBefore(js, fjs);
+	   }(document, 'script', 'facebook-jssdk'));
+	</script>
 </body>
 </html>
