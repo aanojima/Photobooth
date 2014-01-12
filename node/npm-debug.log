@@ -1,0 +1,191 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/afs/athena.mit.edu/user/a/a/aanojima/.local/bin/node',
+1 verbose cli   '/afs/athena.mit.edu/user/a/a/aanojima/.local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'websocket' ]
+2 info using npm@1.3.21
+3 info using node@v0.10.24
+4 warn package.json node@0.0.0 No description
+5 warn package.json node@0.0.0 No repository field.
+6 warn package.json search@1.0.0 No repository field.
+7 verbose cache add [ 'websocket', null ]
+8 verbose cache add name=undefined spec="websocket" args=["websocket",null]
+9 verbose parsed url { protocol: null,
+9 verbose parsed url   slashes: null,
+9 verbose parsed url   auth: null,
+9 verbose parsed url   host: null,
+9 verbose parsed url   port: null,
+9 verbose parsed url   hostname: null,
+9 verbose parsed url   hash: null,
+9 verbose parsed url   search: null,
+9 verbose parsed url   query: null,
+9 verbose parsed url   pathname: 'websocket',
+9 verbose parsed url   path: 'websocket',
+9 verbose parsed url   href: 'websocket' }
+10 silly lockFile 67c371fd-websocket websocket
+11 verbose lock websocket /afs/athena.mit.edu/user/a/a/aanojima/.npm/67c371fd-websocket.lock
+12 silly lockFile 67c371fd-websocket websocket
+13 silly lockFile 67c371fd-websocket websocket
+14 verbose addNamed [ 'websocket', '' ]
+15 verbose addNamed [ null, '*' ]
+16 silly lockFile 75462c75-websocket websocket@
+17 verbose lock websocket@ /afs/athena.mit.edu/user/a/a/aanojima/.npm/75462c75-websocket.lock
+18 silly addNameRange { name: 'websocket', range: '*', hasData: false }
+19 verbose url raw websocket
+20 verbose url resolving [ 'https://registry.npmjs.org/', './websocket' ]
+21 verbose url resolved https://registry.npmjs.org/websocket
+22 info trying registry request attempt 1 at 02:26:12
+23 verbose etag "CJ61KKQKP6QL8GVXIYM6JS68Q"
+24 http GET https://registry.npmjs.org/websocket
+25 http 304 https://registry.npmjs.org/websocket
+26 silly registry.get cb [ 304,
+26 silly registry.get   { date: 'Sun, 12 Jan 2014 07:26:13 GMT',
+26 silly registry.get     server: 'Apache',
+26 silly registry.get     connection: 'Keep-Alive',
+26 silly registry.get     'keep-alive': 'timeout=10, max=50',
+26 silly registry.get     etag: '"CJ61KKQKP6QL8GVXIYM6JS68Q"',
+26 silly registry.get     vary: 'Accept' } ]
+27 verbose etag websocket from cache
+28 silly addNameRange number 2 { name: 'websocket', range: '*', hasData: true }
+29 silly addNameRange versions [ 'websocket',
+29 silly addNameRange   [ '0.0.1',
+29 silly addNameRange     '0.0.2',
+29 silly addNameRange     '0.0.3',
+29 silly addNameRange     '0.0.4',
+29 silly addNameRange     '0.0.5',
+29 silly addNameRange     '0.0.6',
+29 silly addNameRange     '0.0.7',
+29 silly addNameRange     '0.0.8',
+29 silly addNameRange     '0.0.9',
+29 silly addNameRange     '0.0.10',
+29 silly addNameRange     '0.0.11',
+29 silly addNameRange     '0.0.12',
+29 silly addNameRange     '0.0.13',
+29 silly addNameRange     '0.0.14',
+29 silly addNameRange     '0.0.15',
+29 silly addNameRange     '0.0.16',
+29 silly addNameRange     '0.0.17',
+29 silly addNameRange     '0.0.18',
+29 silly addNameRange     '0.0.19',
+29 silly addNameRange     '0.0.20',
+29 silly addNameRange     '1.0.0',
+29 silly addNameRange     '1.0.1',
+29 silly addNameRange     '1.0.2',
+29 silly addNameRange     '1.0.3',
+29 silly addNameRange     '1.0.4',
+29 silly addNameRange     '1.0.5',
+29 silly addNameRange     '1.0.6',
+29 silly addNameRange     '1.0.7',
+29 silly addNameRange     '1.0.8' ] ]
+30 verbose addNamed [ 'websocket', '1.0.8' ]
+31 verbose addNamed [ '1.0.8', '1.0.8' ]
+32 silly lockFile d35370f3-websocket-1-0-8 websocket@1.0.8
+33 verbose lock websocket@1.0.8 /afs/athena.mit.edu/user/a/a/aanojima/.npm/d35370f3-websocket-1-0-8.lock
+34 silly lockFile d35370f3-websocket-1-0-8 websocket@1.0.8
+35 silly lockFile d35370f3-websocket-1-0-8 websocket@1.0.8
+36 silly lockFile 75462c75-websocket websocket@
+37 silly lockFile 75462c75-websocket websocket@
+38 silly resolved [ { name: 'websocket',
+38 silly resolved     description: 'Websocket Client & Server Library implementing the WebSocket protocol as specified in RFC 6455.',
+38 silly resolved     keywords:
+38 silly resolved      [ 'websocket',
+38 silly resolved        'websockets',
+38 silly resolved        'socket',
+38 silly resolved        'networking',
+38 silly resolved        'comet',
+38 silly resolved        'push' ],
+38 silly resolved     author:
+38 silly resolved      { name: 'Brian McKelvey',
+38 silly resolved        email: 'brian@worlize.com',
+38 silly resolved        url: 'https://www.worlize.com/' },
+38 silly resolved     version: '1.0.8',
+38 silly resolved     repository:
+38 silly resolved      { type: 'git',
+38 silly resolved        url: 'http://github.com/Worlize/WebSocket-Node.git' },
+38 silly resolved     engines: { node: '>=0.6.10' },
+38 silly resolved     config: { verbose: false },
+38 silly resolved     scripts: { install: 'node install.js' },
+38 silly resolved     main: 'index',
+38 silly resolved     directories: { lib: './lib' },
+38 silly resolved     readme: 'WebSocket Client & Server Implementation for Node\n=================================================\n\nOverview\n--------\nThis is a (mostly) pure JavaScript implementation of the WebSocket protocol versions 8 and 13 for Node.  There are some example client and server applications that implement various interoperability testing protocols in the "test" folder.\n\nCurrent News\n------------\n\n- As of version 1.0.7, ***Native modules are now optional.*** If they fail to compile, WebSocket-Node will still work but will not verify that received UTF-8 data is valid, and xor masking/unmasking of payload data for security purposes will not be as efficient as it is performed in JavaScript instead of native code.\n\n- Version 1.0.7 requires node v0.6.10, since that\'s the first version that I can manage to successfully build the native extensions with node-gyp through npm.  If anyone can figure out how to build native extensions in a way that works with both older and newer versions of Node, I\'m happy to accept a patch!\n\n- If you want to support Unicode characters outside the Basic Multilingual Plane (BMP) you must use Node v0.8.x, which added support for representing these characters as surrogate pairs inside JavaScript strings.  Under Node v0.6.x, characters with code points greater than 65535 (greater than a 16-bit unsigned value) will have their code point truncated, resulting in seemingly unpredictable characters being returned.\n\n- WebSocket-Node was already [one of the fastest WebSocket libraries for Node](http://hobbycoding.posterous.com/websockt-binary-data-transfer-benchmark-rsult), and thanks to a small patch from [kazuyukitanimura](https://github.com/kazuyukitanimura), this library is now [up to 200% faster](http://hobbycoding.posterous.com/how-to-make-websocket-work-2x-faster-on-nodej) as of version 1.0.3!\n\nChangelog\n---------\n\nCurrent Version: 1.0.7\n\n[View the changelog](https://github.com/Worlize/WebSocket-Node/blob/master/CHANGELOG.md)\n\nBrowser Support\n---------------\n\n* Firefox 7-9 (Old) (Protocol Version 8)\n* Firefox 10+ (Protocol Version 13)\n* Chrome 14,15 (Old) (Protocol Version 8)\n* Chrome 16+ (Protocol Version 13)\n* Internet Explorer 10 (Preview) (Protocol Version 13)\n* Safari 6 (Protocol Version 13)\n\n***Safari older than 6.0 is not supported since it uses a very old draft of WebSockets***\n\nI made a decision early on to explicitly avoid maintaining multiple slightly different copies of the same code just to support the browsers currently in the wild.  The major browsers that support WebSocket are on a rapid-release schedule (with the exception of Safari) and now that the final version of the protocol has been [published as an official RFC](http://datatracker.ietf.org/doc/rfc6455/), it won\'t be long before support in the wild stabilizes on that version.  My client application is in Flash/ActionScript 3, so for my purposes I\'m not dependent on the browser implementations.  *I made an exception to my stated intention here to support protocol version 8 along with 13, since only one minor thing changed and it was trivial to handle conditionally.*  The library now interoperates with other clients and servers implementing draft -08 all the way up through the final RFC.\n\n***If you need to simultaneously support legacy browser versions that had implemented draft-75/draft-76/draft-00, take a look here: https://gist.github.com/1428579***\n\nFor a WebSocket client written in ActionScript 3, see my [AS3WebScocket](https://github.com/Worlize/AS3WebSocket) project.\n\nBenchmarks\n----------\nThere are some basic benchmarking sections in the Autobahn test suite.  I\'ve put up a [benchmark page](http://worlize.github.com/WebSocket-Node/benchmarks/) that shows the results from the Autobahn tests run against AutobahnServer 0.4.10, WebSocket-Node 1.0.2, WebSocket-Node 1.0.4, and ws 0.3.4.\n\nAutobahn Tests\n--------------\nThe very complete [Autobahn Test Suite](http://www.tavendo.de/autobahn/testsuite.html) is used by most WebSocket implementations to test spec compliance and interoperability.\n\n**Note about failing UTF-8 tests:** There are some UTF-8 validation tests that fail due to the fact that according to the ECMAScript spec, V8 and subsequently Node cannot support Unicode characters outside the BMP (Basic Multilingual Plane.)  JavaScript\'s String.fromCharCode() function truncates all code points to 16-bit, so you cannot decode higher plane code points in JavaScript.  Google\'s V8 uses UCS-2 as its internal string representation, and [they have no intention to change that any time soon](http://code.google.com/p/v8/issues/detail?id=761), so it is not possible to decode higher plane code points in C++, to the best of my knowledge, because those characters are not representable in UCS-2 anyway.  The Autobahn Test Suite requires that all valid Unicode code points survive a complete round trip, including code points that represent non-existent characters and characters above the BMP.  Since JavaScript cannot represent any characters with a code point >= 65535, no JavaScript implementation of WebSockets can pass these UTF-8 tests without using a cheat, such as echoing back the original binary data without decoding and re-encoding the UTF-8 data, which is not representative of real-world practical application.  ***I do not consider this to be a problem in the majority of circumstances*** since it is very unlikely to cause major issues in any real-world application as long as you don\'t need to use characters outside the BMP.\n**Update:** This issue seems to have been resolved in the version of V8 used in Node 0.8.x.  I believe they are using surrogate-pairs to accommodate characters that are outside the BMP, but I haven\'t looked into it.\n\n- [View Server Test Results](http://worlize.github.com/WebSocket-Node/test-report/servers/)\n- [View Client Test Results](http://worlize.github.com/WebSocket-Node/test-report/clients/)\n\nNotes\n-----\nThis library has been used in production on [worlize.com](https://www.worlize.com) since April 2011 and seems to be stable.  Your mileage may vary.\n\n**Tested with the following node versions:**\n\n- 0.6.18\n- 0.8.6\n\nIt may work in earlier or later versions but I\'m not actively testing it outside of the listed versions.  YMMV.\n\nDocumentation\n=============\n\nFor more complete documentation, see the [Documentation Wiki](https://github.com/Worlize/WebSocket-Node/wiki/Documentation).\n\nInstallation\n------------\n\nA few users have reported difficulties building the native extensions without first manually installing node-gyp.  If you have trouble building the native extensions, make sure you\'ve got a C++ compiler, and have done `npm install -g node-gyp` first. \n\nNative extensions are optional, however, and WebSocket-Node will work even if the extensions cannot be compiled.\n\nIn your project root:\n\n    $ npm install websocket\n  \nThen in your code:\n\n```javascript\nvar WebSocketServer = require(\'websocket\').server;\nvar WebSocketClient = require(\'websocket\').client;\nvar WebSocketFrame  = require(\'websocket\').frame;\nvar WebSocketRouter = require(\'websocket\').router;\n```\n\nNote for Windows Users\n----------------------\nBecause there is a small C++ component used for validating UTF-8 data, you will need to install a few other software packages in addition to Node to be able to build this module:\n\n- [Microsoft Visual C++](http://www.microsoft.com/visualstudio/en-us/products/2010-editions/visual-cpp-express)\n- [Python 2.7](http://www.python.org/download/) (NOT Python 3.x)\n\n\nCurrent Features:\n-----------------\n- Licensed under the Apache License, Version 2.0\n- Protocol version "8" and "13" (Draft-08 through the final RFC) framing and handshake\n- Can handle/aggregate received fragmented messages\n- Can fragment outgoing messages\n- Router to mount multiple applications to various path and protocol combinations\n- TLS supported for outbound connections via WebSocketClient\n- TLS supported for server connections (use https.createServer instead of http.createServer)\n  - Thanks to [pors](https://github.com/pors) for confirming this!\n- Cookie setting and parsing\n- Tunable settings\n  - Max Receivable Frame Size\n  - Max Aggregate ReceivedMessage Size\n  - Whether to fragment outgoing messages\n  - Fragmentation chunk size for outgoing messages\n  - Whether to automatically send ping frames for the purposes of keepalive\n  - Keep-alive ping interval\n  - Whether or not to automatically assemble received fragments (allows application to handle individual fragments directly)\n  - How long to wait after sending a close frame for acknowledgment before closing the socket.\n\n\nKnown Issues/Missing Features:\n------------------------------\n- No API for user-provided protocol extensions.\n\n\nUsage Examples\n==============\n\nServer Example\n--------------\n\nHere\'s a short example showing a server that echos back anything sent to it, whether utf-8 or binary.\n\n```javascript\n#!/usr/bin/env node\nvar WebSocketServer = require(\'websocket\').server;\nvar http = require(\'http\');\n\nvar server = http.createServer(function(request, response) {\n    console.log((new Date()) + \' Received request for \' + request.url);\n    response.writeHead(404);\n    response.end();\n});\nserver.listen(8080, function() {\n    console.log((new Date()) + \' Server is listening on port 8080\');\n});\n\nwsServer = new WebSocketServer({\n    httpServer: server,\n    // You should not use autoAcceptConnections for production\n    // applications, as it defeats all standard cross-origin protection\n    // facilities built into the protocol and the browser.  You should\n    // *always* verify the connection\'s origin and decide whether or not\n    // to accept it.\n    autoAcceptConnections: false\n});\n\nfunction originIsAllowed(origin) {\n  // put logic here to detect whether the specified origin is allowed.\n  return true;\n}\n\nwsServer.on(\'request\', function(request) {\n    if (!originIsAllowed(request.origin)) {\n      // Make sure we only accept requests from an allowed origin\n      request.reject();\n      console.log((new Date()) + \' Connection from origin \' + request.origin + \' rejected.\');\n      return;\n    }\n    \n    var connection = request.accept(\'echo-protocol\', request.origin);\n    console.log((new Date()) + \' Connection accepted.\');\n    connection.on(\'message\', function(message) {\n        if (message.type === \'utf8\') {\n            console.log(\'Received Message: \' + message.utf8Data);\n            connection.sendUTF(message.utf8Data);\n        }\n        else if (message.type === \'binary\') {\n            console.log(\'Received Binary Message of \' + message.binaryData.length + \' bytes\');\n            connection.sendBytes(message.binaryData);\n        }\n    });\n    connection.on(\'close\', function(reasonCode, description) {\n        console.log((new Date()) + \' Peer \' + connection.remoteAddress + \' disconnected.\');\n    });\n});\n```\n\nClient Example\n--------------\n\nThis is a simple example client that will print out any utf-8 messages it receives on the console, and periodically sends a random number.\n\n*This code demonstrates a client in Node.js, not in the browser*\n\n```javascript\n#!/usr/bin/env node\nvar WebSocketClient = require(\'websocket\').client;\n\nvar client = new WebSocketClient();\n\nclient.on(\'connectFailed\', function(error) {\n    console.log(\'Connect Error: \' + error.toString());\n});\n\nclient.on(\'connect\', function(connection) {\n    console.log(\'WebSocket client connected\');\n    connection.on(\'error\', function(error) {\n        console.log("Connection Error: " + error.toString());\n    });\n    connection.on(\'close\', function() {\n        console.log(\'echo-protocol Connection Closed\');\n    });\n    connection.on(\'message\', function(message) {\n        if (message.type === \'utf8\') {\n            console.log("Received: \'" + message.utf8Data + "\'");\n        }\n    });\n    \n    function sendNumber() {\n        if (connection.connected) {\n            var number = Math.round(Math.random() * 0xFFFFFF);\n            connection.sendUTF(number.toString());\n            setTimeout(sendNumber, 1000);\n        }\n    }\n    sendNumber();\n});\n\nclient.connect(\'ws://localhost:8080/\', \'echo-protocol\');\n```\n    \nRequest Router Example\n----------------------\n\nFor an example of using the request router, see `libwebsockets-test-server.js` in the `test` folder.\n\n\nResources\n---------\n\nA presentation on the state of the WebSockets protocol that I gave on July 23, 2011 at the LA Hacker News meetup.  [WebSockets: The Real-Time Web, Delivered](http://www.scribd.com/doc/60898569/WebSockets-The-Real-Time-Web-Delivered)',
+38 silly resolved     readmeFilename: 'README.md',
+38 silly resolved     bugs: { url: 'https://github.com/Worlize/WebSocket-Node/issues' },
+38 silly resolved     homepage: 'https://github.com/Worlize/WebSocket-Node',
+38 silly resolved     _id: 'websocket@1.0.8',
+38 silly resolved     _from: 'websocket@' } ]
+39 info install websocket@1.0.8 into /afs/athena.mit.edu/user/a/a/aanojima/web_scripts
+40 info installOne websocket@1.0.8
+41 info /afs/athena.mit.edu/user/a/a/aanojima/web_scripts/node_modules/websocket unbuild
+42 info preuninstall websocket@1.0.8
+43 info uninstall websocket@1.0.8
+44 verbose true,/afs/athena.mit.edu/user/a/a/aanojima/web_scripts/node_modules,/afs/athena.mit.edu/user/a/a/aanojima/web_scripts/node_modules unbuild websocket@1.0.8
+45 info postuninstall websocket@1.0.8
+46 verbose tar unpack /afs/athena.mit.edu/user/a/a/aanojima/.npm/websocket/1.0.8/package.tgz
+47 silly lockFile aa25d4bc-b-scripts-node-modules-websocket tar:///afs/athena.mit.edu/user/a/a/aanojima/web_scripts/node_modules/websocket
+48 verbose lock tar:///afs/athena.mit.edu/user/a/a/aanojima/web_scripts/node_modules/websocket /afs/athena.mit.edu/user/a/a/aanojima/.npm/aa25d4bc-b-scripts-node-modules-websocket.lock
+49 silly lockFile 89df3305--npm-websocket-1-0-8-package-tgz tar:///afs/athena.mit.edu/user/a/a/aanojima/.npm/websocket/1.0.8/package.tgz
+50 verbose lock tar:///afs/athena.mit.edu/user/a/a/aanojima/.npm/websocket/1.0.8/package.tgz /afs/athena.mit.edu/user/a/a/aanojima/.npm/89df3305--npm-websocket-1-0-8-package-tgz.lock
+51 silly gunzTarPerm modes [ '755', '644' ]
+52 silly gunzTarPerm extractEntry package.json
+53 silly gunzTarPerm extractEntry README.md
+54 silly gunzTarPerm extractEntry LICENSE
+55 silly gunzTarPerm extractEntry index.js
+56 silly gunzTarPerm extractEntry install.js
+57 silly gunzTarPerm extractEntry Makefile
+58 silly gunzTarPerm extractEntry CHANGELOG.md
+59 silly gunzTarPerm extractEntry lib/Constants.js
+60 silly gunzTarPerm extractEntry lib/WebSocketClient.js
+61 silly gunzTarPerm extractEntry lib/WebSocketConnection.js
+62 silly gunzTarPerm extractEntry lib/WebSocketFrame.js
+63 silly gunzTarPerm extractEntry lib/Validation.js
+64 silly gunzTarPerm extractEntry lib/WebSocketRouter.js
+65 silly gunzTarPerm extractEntry lib/WebSocketRouterRequest.js
+66 silly gunzTarPerm extractEntry lib/WebSocketServer.js
+67 silly gunzTarPerm extractEntry lib/utils.js
+68 silly gunzTarPerm extractEntry lib/websocket.js
+69 silly gunzTarPerm extractEntry lib/Validation.fallback.js
+70 silly gunzTarPerm extractEntry lib/xor.fallback.js
+71 silly gunzTarPerm extractEntry lib/Deprecation.js
+72 silly gunzTarPerm extractEntry lib/xor.js
+73 silly gunzTarPerm extractEntry lib/WebSocketRequest.js
+74 silly gunzTarPerm extractEntry binding.gyp
+75 silly gunzTarPerm extractEntry src/validation.cc
+76 silly gunzTarPerm extractEntry src/xor.cpp
+77 silly gunzTarPerm extractEntry vendor/FastBufferList.js
+78 silly gunzTarPerm extractEntry vendor/node-ctype/LICENSE
+79 silly gunzTarPerm extractEntry vendor/node-ctype/ctio-faster.js
+80 silly lockFile aa25d4bc-b-scripts-node-modules-websocket tar:///afs/athena.mit.edu/user/a/a/aanojima/web_scripts/node_modules/websocket
+81 silly lockFile aa25d4bc-b-scripts-node-modules-websocket tar:///afs/athena.mit.edu/user/a/a/aanojima/web_scripts/node_modules/websocket
+82 silly lockFile 89df3305--npm-websocket-1-0-8-package-tgz tar:///afs/athena.mit.edu/user/a/a/aanojima/.npm/websocket/1.0.8/package.tgz
+83 silly lockFile 89df3305--npm-websocket-1-0-8-package-tgz tar:///afs/athena.mit.edu/user/a/a/aanojima/.npm/websocket/1.0.8/package.tgz
+84 info preinstall websocket@1.0.8
+85 verbose readDependencies using package.json deps
+86 verbose readDependencies using package.json deps
+87 silly resolved []
+88 verbose about to build /afs/athena.mit.edu/user/a/a/aanojima/web_scripts/node_modules/websocket
+89 info build /afs/athena.mit.edu/user/a/a/aanojima/web_scripts/node_modules/websocket
+90 verbose linkStuff [ false,
+90 verbose linkStuff   false,
+90 verbose linkStuff   false,
+90 verbose linkStuff   '/afs/athena.mit.edu/user/a/a/aanojima/web_scripts/node_modules' ]
+91 info linkStuff websocket@1.0.8
+92 verbose linkBins websocket@1.0.8
+93 verbose linkMans websocket@1.0.8
+94 verbose rebuildBundles websocket@1.0.8
+95 info install websocket@1.0.8
+96 verbose unsafe-perm in lifecycle true
+97 error Error: spawn ENOENT
+97 error     at errnoException (child_process.js:980:11)
+97 error     at Process.ChildProcess._handle.onexit (child_process.js:771:34)
+98 error If you need help, you may report this *entire* log,
+98 error including the npm and node versions, at:
+98 error     <http://github.com/isaacs/npm/issues>
+99 error System Linux 3.2.0-31-generic
+100 error command "/afs/athena.mit.edu/user/a/a/aanojima/.local/bin/node" "/afs/athena.mit.edu/user/a/a/aanojima/.local/bin/npm" "install" "websocket"
+101 error cwd /afs/athena.mit.edu/user/a/a/aanojima/web_scripts/photobooth/node
+102 error node -v v0.10.24
+103 error npm -v 1.3.21
+104 error syscall spawn
+105 error code ENOENT
+106 error errno ENOENT
+107 verbose exit [ 1, true ]

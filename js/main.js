@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+	var connection = new WebSocket("ws://athena.dialup.mit.edu:8000/photobooth/node/server.js", 'control-protocol');
 	var streaming = false,
 		video        = document.querySelector('#video'),
 		canvas       = document.querySelector('#canvas'),
@@ -18,13 +18,13 @@ $(document).ready(function() {
 
 	navigator.getMedia(
 		{
-	  		video: true,
-	  		audio: false
+			video: true,
+			audio: false
 		},
 		function(stream) {
-  			if (navigator.mozGetUserMedia) {
+			if (navigator.mozGetUserMedia) {
 				video.mozSrcObject = stream;
-	  		} else {
+			} else {
 				var vendorURL = window.URL || window.webkitURL;
 				video.src = vendorURL.createObjectURL(stream);
 			}
@@ -41,7 +41,7 @@ $(document).ready(function() {
 	video.addEventListener('canplay', function(ev){
 		if (!streaming) {
 			height = video.videoHeight / (video.videoWidth/width);
-  			streaming = true;
+			streaming = true;
 		}
 	}, false);
 
@@ -119,13 +119,70 @@ $(document).ready(function() {
 		});
 	}
 
+	function shareToFacebook() {
+		FB.getAuthResponse();
+		var wallPost = {
+			message : "testing...",
+			picture: "http://static.tumblr.com/44e684098f0ac7c33a6640c20556b923/jxahzkb/fZ5mod2rw/tumblr_static_dog-logo.jpg"
+		};
+		
+		FB.api('/me/feed', 'post', wallPost , function(response) {
+			if (!response || response.error) {
+				alert('Error occured');
+			} else {
+				alert('Post ID: ' + response);
+			}
+		});
+
+		// FB.ui({
+		// 	method: 'feed',
+		// 	name: 'Techfair Photobooth',
+		// 	link: 'https://www.facebook.com/appcenter/techxphotobooth',
+		// 	picture: 'http://static.tumblr.com/44e684098f0ac7c33a6640c20556b923/jxahzkb/fZ5mod2rw/tumblr_static_dog-logo.jpg',
+		// 	caption: 'Reference Documentation',
+		// 	description: 'testing'
+		// }, function(response) {
+		// 	if (response && response.post_id) {
+		// 		alert('Post was published.');
+		// 	} else {
+		// 		alert('Post was not published.');
+		// 	}
+		// });
+	}
+
+	$('#facebook_button').click(shareToFacebook);
+
 	$('#modal-email').on('hidden.bs.modal', function (e) {
-  		$('#emailAlert').css('display', 'none');
+		$('#emailAlert').css('display', 'none');
 	});
 	$('#email_form').submit(function(){
 		sendEmail();
 		return false;
 	})
+
+
+	connection.addEventListener("message", function(event) {
+		console.log(event.data);
+		results = event.data.split(",");
+		switch(results[0]){
+			case "TakePhoto":
+				countdown();
+				break;
+			case "Back":
+				goBack();
+				break;
+			case "PressEmail":
+				break;
+			case "SendEmail":
+				break;
+			case "CancelEmail":
+				break;
+			case "Facebook":
+				break;
+			case "Twitter":
+				break;
+		}
+	});
 
 	startbutton.addEventListener('click', function(ev){
 		countdown();
@@ -146,5 +203,5 @@ $(document).ready(function() {
 		sendEmail();
 		ev.preventDefault();
 	}, false);
-	
+
 });
