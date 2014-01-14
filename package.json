@@ -1,0 +1,22 @@
+{
+  "name": "Photobooth",
+  "version": "0.0.0",
+  "description": "Techfair Photobooth",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aanojima/Photobooth.git"
+  },
+  "keywords": [
+    "photobooth",
+    "techfair"
+  ],
+  "author": "Aaron Nojima",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aanojima/Photobooth/issues"
+  }
+}
