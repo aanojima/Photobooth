@@ -1,5 +1,11 @@
 $(document).ready(function(){
-	var connection = new WebSocket("ws://athena.dialup.mit.edu:8000/photobooth/node/server.js", 'control-protocol');
+	var connection = new WebSocket("ws://athena.dialup.mit.edu:1234", 'control-protocol');
+	connection.onopen = function(event){
+		console.log("Connection opened...");
+	}
+	connection.onclose = function(event){
+		console.log("Connection closed");
+	}
 	$("#photo_button").click(function(){
 		connection.send("TakePhoto");
 	})

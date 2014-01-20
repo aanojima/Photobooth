@@ -1,5 +1,12 @@
 $(document).ready(function() {
-	var connection = new WebSocket("ws://athena.dialup.mit.edu:8000/photobooth/node/server.js", 'control-protocol');
+	var connection = new WebSocket("ws://athena.dialup.mit.edu:1234", 'control-protocol');
+	connection.onopen = function(event){
+		console.log("Connection open...");
+	}
+	connection.onclose = function(event){
+		console.log("Connection closed...");
+	}
+
 	var streaming = false,
 		video        = document.querySelector('#video'),
 		canvas       = document.querySelector('#canvas'),
@@ -9,7 +16,8 @@ $(document).ready(function() {
 		sendemail    = document.querySelector("#send_email"),
 		width = $("#video").width(),
 		height = $("#video").height(),
-		data;
+		data = [],
+		isCounting = false;
 
 	navigator.getMedia = ( navigator.getUserMedia ||
 						navigator.webkitGetUserMedia ||
@@ -46,36 +54,48 @@ $(document).ready(function() {
 	}, false);
 
 	function countdown() {
-		$("#count3").fadeIn(500,function(){
-			$("#count3").fadeOut(500,function(){
-				$("#count2").fadeIn(500,function(){
-					$("#count2").fadeOut(500,function(){
-						$("#count1").fadeIn(500,function(){
-							$("#count1").fadeOut(takePicture);
+		if (isCounting){
+			$("#count3").fadeIn(500,function(){
+				$("#count3").fadeOut(500,function(){
+					$("#count2").fadeIn(500,function(){
+						$("#count2").fadeOut(500,function(){
+							$("#count1").fadeIn(500,function(){
+								$("#count1").fadeOut(multiplePhotos(9));
+							});
 						});
 					});
 				});
 			});
-		});
+		} else {
+			multiplePhotos(9)
+		}
+	}
+
+	function multiplePhotos(times) {
+		console.log(times);
+		if (times == 0){ console.log(data); return; }
+		else { takePicture(); }
+		setTimeout(function(){multiplePhotos(times-1);}, 250);
 	}
 
 	function takePicture() {
 
 		// Capturing Image from Webcam
+		$("#white_flash").fadeIn(200, function(){$("#white_flash").fadeOut(200)})
 		$("#video").css('display', 'none');
 		$("#canvas").fadeIn(1000);
-		$("#white_flash").fadeIn(200, function(){$("#white_flash").fadeOut(200)})
 		// TODO: Show Edit Menu
 		$(".pre-photo_button").css("display", "none");
 		$(".post-photo_button").css("display", "inline-block").fadeIn(200);
 		canvas.width = width;
 		canvas.height = height;
 		canvas.getContext('2d').drawImage(video, 0, 0, width, height);
-		data = canvas.toDataURL('image/png');
-		console.log(data);
+		data.push(canvas.toDataURL('image/png'));
+
 	}
 
 	function goBack() {
+		delete data;
 		$("#video").css("display", "block");
 		$("#canvas").css("display", "none");
 		$(".pre-photo_button").css("display", "block");
@@ -102,7 +122,6 @@ $(document).ready(function() {
 			return;
 		} 
 		$("#modal-email").modal('hide');
-		console.log(email,data);
 		$.ajax({
 			type : "POST",
 			url : "php/send.php",
@@ -159,7 +178,6 @@ $(document).ready(function() {
 		sendEmail();
 		return false;
 	})
-
 
 	connection.addEventListener("message", function(event) {
 		console.log(event.data);
