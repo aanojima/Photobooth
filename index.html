@@ -17,50 +17,46 @@
 		<div id="camera">
 			<div id="settings">
 				<div id="settings_menu">
-					<div class="menu_item"><h2 style="text-align:center">SETTINGS</h1></div><hr/>
+					<div class="menu_item" style="text-align:center"><strong><u>SETTINGS</u></strong></div><br>
 					<div class="menu_item">
 						<label for="countdown"><b>COUNTDOWN:</b></label>
 						<input id="countdown" type="checkbox" name="countdown" checked>
-					</div>
+					</div><br>
 					<div class="menu_item">
 						<label for="times"><b>NUMBER OF PHOTOS:</b></label>
 						<input id="times" type="number" min="1" max="5" value="1" name="times">
 					</div><br>
 					<div class="menu_item">
-						<label for="hue"><b>HUE:</b></label>
-						<input id="hue" class="filter" type="range">
-					</div>
+						<label for="hue-rotate"><b>HUE:</b></label>
+						<input id="hue-rotate" name="hue-rotate" unit="deg" class="filter" type="range" min="0" max="360" step="1" value="0">
+					</div><br>
 					<div class="menu_item">
 						<label for="grayscale"><b>GRAYSCALE:</b></label>
-						<input id="grayscale" class="filter" type="range">
-					</div>
+						<input id="grayscale" name="grayscale" unit="%" class="filter" type="range" min="0" max="100" step="1" value="0">
+					</div><br>
 					<div class="menu_item">
 						<label for="sepia"><b>SEPIA:</b></label>
-						<input id="sepia" class="filter" type="range">
-					</div>
+						<input id="sepia" name="sepia" unit="%" class="filter" type="range" min="0" max="100" step="1" value="0">
+					</div><br>
 					<div class="menu_item">
 						<label for="blur"><b>BLUR:</b></label>
-						<input id="blur" class="filter" type="range">
-					</div>
-					<div class="menu_item">
-						<label for="brightness"><b>BRIGHTNESS:</b></label>
-						<input id="brightness" class="filter" type="range">
-					</div>
-					<div class="menu_item">
-						<label for="contrast"><b>CONTRAST:</b></label>
-						<input id="contrast" class="filter" type="range">
-					</div>
+						<input id="blur" name="blur" unit="px" class="filter" type="range" min="0" max="50" step="1" value="0">
+					</div><br>
 					<div class="menu_item">
 						<label for="invert"><b>INVERT:</b></label>
-						<input id="invert" class="filter" type="range">
-					</div>
+						<input id="invert" name="invert" unit="%" class="filter" type="range" min="0" max="100" step="1" value="0">
+					</div><br>
+					<div class="menu_item">
+						<label for="brightness"><b>BRIGHTNESS:</b></label>
+						<input id="brightness" name="brightness" unit="%" class="filter" type="number" min="0" step="1" value="100">
+					</div><br>
+					<div class="menu_item">
+						<label for="contrast"><b>CONTRAST:</b></label>
+						<input id="contrast" name="contrast" unit="%" class="filter" type="number" min="0" step="1" value="100">
+					</div><br>
 					<div class="menu_item">
 						<label for="saturate"><b>SATURATE:</b></label>
-						<input id="saturate" class="filter" type="range">
-					</div>
-					<div class="menu_item">
-						<label for="opacity"><b>OPACITY:</b></label>
-						<input id="opacity" class="filter" type="range">
+						<input id="saturate" name="saturate" unit="%" class="filter" type="number" min="0" step="1" value="100">
 					</div>
 					<!-- <div class="menu_item">>
 						<label for><b></b></label>
@@ -68,8 +64,8 @@
 					</div> -->
 				</div>
 			</div>
-			<video id="video" autoplay></video>
-			<canvas id="canvas"></canvas>
+			<video id="video" class="visual" autoplay></video>
+			<canvas id="canvas" class="visual" ></canvas>
 			<div id="blackwhite"></div>
 
 			<!-- modal form to send email -->

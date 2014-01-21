@@ -7,6 +7,17 @@ $(document).ready(function() {
 	// 	console.log("Connection closed...");
 	// }
 
+	var filters = {
+		"hue-rotate" : "(0deg)",
+		"grayscale" : "(0%)",
+		"sepia" : "(0%)",
+		"blur" : "(none)",
+		"invert" : "(0%)",
+		"brightness" : "(100%)",
+		"contrast" : "(100%)",
+		"saturate" : "(100%)",
+	}
+
 	var streaming = false,
 		video        = document.querySelector('#video'),
 		canvas       = document.querySelector('#canvas'),
@@ -119,6 +130,15 @@ $(document).ready(function() {
 		});
 	}
 
+	function compileFilterCSS(){
+		var output = "";
+		for (var name in filters){
+			var value = filters[name];
+			output = output + name + value + " ";
+		}
+		return output;
+	}
+
 	function inputEmail() {
 		$("#modal-email").modal('show');
 		// $('body').append($('<div id="lightbox-shadow"/>'))
@@ -205,6 +225,27 @@ $(document).ready(function() {
 		$(this).val(sanitized);
 	});
 
+	function changeCSS(selector){
+		var filterName = $(selector).attr("name");
+		var filterValue = $(selector).val();
+		var filterUnit = $(selector).attr("unit");
+		if (filterName == "blur" && filterValue == "0"){
+			filter[filterName] = "(none)";
+		} else {
+			filters[filterName] = "(" + filterValue + filterUnit + ")";	
+		}
+		var newCSS = compileFilterCSS();
+		$("#video, #canvas").css("-webkit-filter", newCSS);
+	}
+
+	$('.menu_item input[type="number"][class="filter"').on('change keyup', function(){
+		changeCSS(this);
+	})
+
+	$(".menu_item input[type='range']").on('change', function(){
+		changeCSS(this);
+	})
+
 	// connection.addEventListener("message", function(event) {
 	// 	console.log(event.data);
 	// 	results = event.data.split(",");
@@ -233,13 +274,18 @@ $(document).ready(function() {
 		$("#settings").animate({"width" : settings_width});	
 	});
 
-	$("#video, #canvas").click(function(e){
-		$("#settings").animate({"width" : "0px"});
-	})
+	// $("#video, #canvas").click(function(e){
+	// 	$("#settings").animate({"width" : "0px"});
+	// })
 
 	$("#menu_countdown").click(function(e){
 		isCounting = $(this).is(":checked");
 	})
+
+	$(".filter").on('change', function(){
+		var newValue = $(this).val();
+
+	});
 
 	startbutton.addEventListener('click', function(ev){
 		countdown();

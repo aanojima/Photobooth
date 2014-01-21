@@ -18,6 +18,10 @@ body {
 
 /*TODO: Edit Menu Layout*/
 
+/*#video, #canvas {
+	-webkit-filter : hue-rotate(0deg) grayscale(0%) sepia(0%) blur(0px) invert(0%) brightness(100%) contrast(100%) saturate(100%);
+}*/
+
 #video {
 	display : block;
 	width : 100%;
@@ -41,6 +45,7 @@ body {
 	opacity : 0.5;
 	position : absolute;
 	overflow : hidden;
+	z-index : 1;
 }
 
 #settings_menu {
@@ -53,7 +58,7 @@ body {
 	width : 260px;
 }
 
-.menu_item input {
+.filter {
 	float : right;
 }
 
