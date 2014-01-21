@@ -1,11 +1,11 @@
 $(document).ready(function() {
-	var connection = new WebSocket("ws://athena.dialup.mit.edu:1234", 'control-protocol');
-	connection.onopen = function(event){
-		console.log("Connection open...");
-	}
-	connection.onclose = function(event){
-		console.log("Connection closed...");
-	}
+	// var connection = new WebSocket("ws://athena.dialup.mit.edu:1234", 'control-protocol');
+	// connection.onopen = function(event){
+	// 	console.log("Connection open...");
+	// }
+	// connection.onclose = function(event){
+	// 	console.log("Connection closed...");
+	// }
 
 	var streaming = false,
 		video        = document.querySelector('#video'),
@@ -16,8 +16,7 @@ $(document).ready(function() {
 		sendemail    = document.querySelector("#send_email"),
 		width = $("#video").width(),
 		height = $("#video").height(),
-		data = [],
-		isCounting = false;
+		data = [];
 
 	navigator.getMedia = ( navigator.getUserMedia ||
 						navigator.webkitGetUserMedia ||
@@ -37,7 +36,8 @@ $(document).ready(function() {
 				video.src = vendorURL.createObjectURL(stream);
 			}
 			video.play();
-			$("#start_button").css("display", "block");
+			$("#start_button").css("display", "inline-block");
+			$("#settings_button").css({"display" : "inline-block", "height" : "50px", "width" : "200px"});
 			var vendorURL = window.URL || window.webkitURL;
 			video.src = vendorURL.createObjectURL(stream);
 		},
@@ -54,39 +54,48 @@ $(document).ready(function() {
 	}, false);
 
 	function countdown() {
-		if (isCounting){
+		$(".pre-photo_button").attr("disabled", "disabled");
+		var times = parseInt($("input[name='times']").val());
+		if ($("input[name='countdown']").is(":checked")){
 			$("#count3").fadeIn(500,function(){
 				$("#count3").fadeOut(500,function(){
 					$("#count2").fadeIn(500,function(){
 						$("#count2").fadeOut(500,function(){
 							$("#count1").fadeIn(500,function(){
-								$("#count1").fadeOut(multiplePhotos(9));
+								$("#count1").fadeOut(function(){
+									multiplePhotos(times);
+								});
 							});
 						});
 					});
 				});
 			});
 		} else {
-			multiplePhotos(9)
+			multiplePhotos(times);
 		}
 	}
 
 	function multiplePhotos(times) {
-		console.log(times);
-		if (times == 0){ console.log(data); return; }
-		else { takePicture(); }
-		setTimeout(function(){multiplePhotos(times-1);}, 250);
+		if (times == 0){
+			$(".pre-photo_button").removeAttr("disabled");
+			$(".pre-photo_button").css("display", "none");
+			$("#settings_button").css({"width" : "110px", "height" : "50px"});
+			$(".post-photo_button").css("display", "inline-block");
+		}
+		else { 
+			takePicture();
+			setTimeout(function(){multiplePhotos(times-1);}, 600);
+		}
 	}
 
 	function takePicture() {
 
 		// Capturing Image from Webcam
-		$("#white_flash").fadeIn(200, function(){$("#white_flash").fadeOut(200)})
+		$("#settings").css({"background" : "white"});
+		$("#canvas").css('display', 'block');
 		$("#video").css('display', 'none');
-		$("#canvas").fadeIn(1000);
-		// TODO: Show Edit Menu
-		$(".pre-photo_button").css("display", "none");
-		$(".post-photo_button").css("display", "inline-block").fadeIn(200);
+		$("#blackwhite").css({"background" : "white"});
+		$("#blackwhite").fadeIn(200, function(){$("#blackwhite").fadeOut(200)})
 		canvas.width = width;
 		canvas.height = height;
 		canvas.getContext('2d').drawImage(video, 0, 0, width, height);
@@ -96,12 +105,18 @@ $(document).ready(function() {
 
 	function goBack() {
 		delete data;
-		$("#video").css("display", "block");
-		$("#canvas").css("display", "none");
-		$(".pre-photo_button").css("display", "block");
-		$(".post-photo_button").css("display", "none");
-		$("#email_form").modal('hide');
-		// TODO: Hide Edit Menu
+		$("#blackwhite").css({"background" : "black"});
+		$("#blackwhite").fadeIn(200, function(){
+			$("#blackwhite").fadeOut(200);
+			$("#video").css("display", "block");
+			$("#canvas").css("display", "none");
+			$("#settings").css({"background" : "black"});
+			$(".pre-photo_button").css("display", "inline-block");
+			$(".post-photo_button").css("display", "none");
+			$("#settings_button").css({"width" : "200px"});
+			$("#email_form").modal('hide');
+			// TODO: Hide Edit Menu
+		});
 	}
 
 	function inputEmail() {
@@ -179,28 +194,52 @@ $(document).ready(function() {
 		return false;
 	})
 
-	connection.addEventListener("message", function(event) {
-		console.log(event.data);
-		results = event.data.split(",");
-		switch(results[0]){
-			case "TakePhoto":
-				countdown();
-				break;
-			case "Back":
-				goBack();
-				break;
-			case "PressEmail":
-				break;
-			case "SendEmail":
-				break;
-			case "CancelEmail":
-				break;
-			case "Facebook":
-				break;
-			case "Twitter":
-				break;
+	// Catch all events related to changes
+	$('#times').on('change keyup', function() {
+		// Remove invalid characters
+		var sanitized = $(this).val().replace(/[^1-5]/g, '');
+		if (parseInt(sanitized) < 1 || parseInt(sanitized) > 5){
+			sanitized = '';
 		}
+		// Update value
+		$(this).val(sanitized);
 	});
+
+	// connection.addEventListener("message", function(event) {
+	// 	console.log(event.data);
+	// 	results = event.data.split(",");
+	// 	switch(results[0]){
+	// 		case "TakePhoto":
+	// 			countdown();
+	// 			break;
+	// 		case "Back":
+	// 			goBack();
+	// 			break;
+	// 		case "PressEmail":
+	// 			break;
+	// 		case "SendEmail":
+	// 			break;
+	// 		case "CancelEmail":
+	// 			break;
+	// 		case "Facebook":
+	// 			break;
+	// 		case "Twitter":
+	// 			break;
+	// 	}
+	// });
+
+	$("#settings_button").click(function(e){
+		var settings_width = $("#settings").css("width") == "300px" ? "0px" : "300px";
+		$("#settings").animate({"width" : settings_width});	
+	});
+
+	$("#video, #canvas").click(function(e){
+		$("#settings").animate({"width" : "0px"});
+	})
+
+	$("#menu_countdown").click(function(e){
+		isCounting = $(this).is(":checked");
+	})
 
 	startbutton.addEventListener('click', function(ev){
 		countdown();
