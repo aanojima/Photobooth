@@ -1,23 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<!-- Information -->
+	<title>TechX Photobooth</title>
+	<!-- JavaScript -->
 	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script src="js/fb-root.js"></script>
 	<script src="js/main.js"></script>
+	<!-- CSS -->
 	<link href="css/bootstrap.css" rel="stylesheet"></link>
 	<link href="css/layout.css" rel="stylesheet"></link>
 </head>
 <body>
 	<div id="fb-root"></div>
 	<div id="header">
-		<image id="logo" src="images/photobooth_logo.png"></image>
+		<image id="logo" src="images/photobooth.png"></image>
 	</div>
-	<!-- TODO: Edit Bar Left -->
 	<div id="content">
 		<div id="camera">
 			<div id="settings">
 				<div id="settings_menu">
 					<div class="menu_item" style="text-align:center"><strong><u>SETTINGS</u></strong></div><br>
+					<div class="menu_item">
+						<label for="mirrored"><b>MIRROR:</b></label>
+						<input id="mirrored" type="checkbox" name="mirrored" checked>
+					</div><br>
 					<div class="menu_item">
 						<label for="countdown"><b>COUNTDOWN:</b></label>
 						<input id="countdown" type="checkbox" name="countdown" checked>
@@ -58,16 +65,11 @@
 						<label for="saturate"><b>SATURATE:</b></label>
 						<input id="saturate" name="saturate" unit="%" class="filter" type="number" min="0" step="1" value="100">
 					</div>
-					<!-- <div class="menu_item">>
-						<label for><b></b></label>
-						<input></input>
-					</div> -->
 				</div>
 			</div>
 			<video id="video" class="visual" autoplay></video>
 			<canvas id="canvas" class="visual" ></canvas>
 			<div id="blackwhite"></div>
-
 			<!-- modal form to send email -->
 			<div class="modal fade" id="modal-email">
 			  <div class="modal-dialog" id="email_form">
@@ -100,7 +102,6 @@
 			<img id="count1" class="count" src="images/1.png"></img>
 		</div>
 	</div>
-	<!-- TODO: Edit Bar Right -->
 	<div id="footer">
 		<button type="button" id="start_button" class="pre-photo_button btn btn-default btn-lg"><span class="glyphicon glyphicon-camera"></span> Take Photo</button>
 		<button id="back_button" class="post-photo_button btn btn-default btn-lg">Back</button>

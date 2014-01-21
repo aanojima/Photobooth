@@ -102,6 +102,7 @@ $(document).ready(function() {
 	function takePicture() {
 
 		// Capturing Image from Webcam
+		$("#camera").css({"border" : "15px solid white"});
 		$("#settings").css({"background" : "white"});
 		$("#canvas").css('display', 'block');
 		$("#video").css('display', 'none');
@@ -117,6 +118,7 @@ $(document).ready(function() {
 	function goBack() {
 		delete data;
 		$("#blackwhite").css({"background" : "black"});
+		$("#camera").css({"border" : "15px solid black"});
 		$("#blackwhite").fadeIn(200, function(){
 			$("#blackwhite").fadeOut(200);
 			$("#video").css("display", "block");
@@ -126,7 +128,6 @@ $(document).ready(function() {
 			$(".post-photo_button").css("display", "none");
 			$("#settings_button").css({"width" : "200px"});
 			$("#email_form").modal('hide');
-			// TODO: Hide Edit Menu
 		});
 	}
 
@@ -160,7 +161,7 @@ $(document).ready(function() {
 		$.ajax({
 			type : "POST",
 			url : "php/send.php",
-			data : {image : data, address : email}, 
+			data : {image : data[data.length -1], address : email}, 
 			success : function(response){
 				console.log(response);
 				//add notification
@@ -278,13 +279,20 @@ $(document).ready(function() {
 	// 	$("#settings").animate({"width" : "0px"});
 	// })
 
-	$("#menu_countdown").click(function(e){
-		isCounting = $(this).is(":checked");
-	})
+	$("#mirrored").click(function(){
+		$(this).is(":checked") ? $("#video, #canvas").css({"-webkit-transform" : "rotateY(180deg)"}) : $("#video, #canvas").css({"-webkit-transform" : "rotateY(0deg)"});
+	});
 
 	$(".filter").on('change', function(){
 		var newValue = $(this).val();
 
+	});
+
+	$(window).on('resize', function(e){
+		if ($(window).width() < 800){
+			$(window).width(800);
+			e.preventDefault();
+		}
 	});
 
 	startbutton.addEventListener('click', function(ev){
