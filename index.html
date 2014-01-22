@@ -6,6 +6,8 @@
 	<!-- JavaScript -->
 	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script src="js/fb-root.js"></script>
+	<script type="text/javascript" src="js/caman.full.js"></script>
+	<script type="text/javascript" src="js/underscore-min.js"></script>
 	<script src="js/main.js"></script>
 	<!-- CSS -->
 	<link href="css/bootstrap.css" rel="stylesheet"></link>
@@ -21,49 +23,150 @@
 			<div id="settings">
 				<div id="settings_menu">
 					<div class="menu_item" style="text-align:center"><strong><u>SETTINGS</u></strong></div><br>
-					<div class="menu_item">
+					<div class="menu_item setting editor">
 						<label for="mirrored"><b>MIRROR:</b></label>
 						<input id="mirrored" type="checkbox" name="mirrored" checked>
 					</div><br>
-					<div class="menu_item">
+					<div class="menu_item setting">
 						<label for="countdown"><b>COUNTDOWN:</b></label>
 						<input id="countdown" type="checkbox" name="countdown" checked>
 					</div><br>
-					<div class="menu_item">
+					<div class="menu_item setting">
 						<label for="times"><b>NUMBER OF PHOTOS:</b></label>
 						<input id="times" type="number" min="1" max="5" value="1" name="times">
 					</div><br>
-					<div class="menu_item">
-						<label for="hue-rotate"><b>HUE:</b></label>
-						<input id="hue-rotate" name="hue-rotate" unit="deg" class="filter" type="range" min="0" max="360" step="1" value="0">
-					</div><br>
-					<div class="menu_item">
-						<label for="grayscale"><b>GRAYSCALE:</b></label>
-						<input id="grayscale" name="grayscale" unit="%" class="filter" type="range" min="0" max="100" step="1" value="0">
-					</div><br>
-					<div class="menu_item">
-						<label for="sepia"><b>SEPIA:</b></label>
-						<input id="sepia" name="sepia" unit="%" class="filter" type="range" min="0" max="100" step="1" value="0">
-					</div><br>
-					<div class="menu_item">
-						<label for="blur"><b>BLUR:</b></label>
-						<input id="blur" name="blur" unit="px" class="filter" type="range" min="0" max="50" step="1" value="0">
-					</div><br>
-					<div class="menu_item">
-						<label for="invert"><b>INVERT:</b></label>
-						<input id="invert" name="invert" unit="%" class="filter" type="range" min="0" max="100" step="1" value="0">
-					</div><br>
-					<div class="menu_item">
-						<label for="brightness"><b>BRIGHTNESS:</b></label>
-						<input id="brightness" name="brightness" unit="%" class="filter" type="number" min="0" step="1" value="100">
-					</div><br>
-					<div class="menu_item">
-						<label for="contrast"><b>CONTRAST:</b></label>
-						<input id="contrast" name="contrast" unit="%" class="filter" type="number" min="0" step="1" value="100">
-					</div><br>
-					<div class="menu_item">
-						<label for="saturate"><b>SATURATE:</b></label>
-						<input id="saturate" name="saturate" unit="%" class="filter" type="number" min="0" step="1" value="100">
+					<div id="Filters">
+						<div class="Filter">
+							<div class="FilterName">
+								<p>brightness</p>
+							</div>
+
+							<div class="FilterSetting">
+								<input type="range" min="-100" max="100" step="1" value="0" data-filter="brightness">
+								<span class="FilterValue">0</span>
+							</div>
+						</div>
+					
+						<div class="Filter">
+							<div class="FilterName">
+								<p>contrast</p>
+							</div>
+
+							<div class="FilterSetting">
+								<input type="range" min="-100" max="100" step="1" value="0" data-filter="contrast">
+								<span class="FilterValue">0</span>
+							</div>
+						</div>
+					
+						<div class="Filter">
+							<div class="FilterName">
+								<p>saturation</p>
+							</div>
+
+							<div class="FilterSetting">
+								<input type="range" min="-100" max="100" step="1" value="0" data-filter="saturation">
+								<span class="FilterValue">0</span>
+							</div>
+						</div>
+					
+						<div class="Filter">
+							<div class="FilterName">
+								<p>vibrance</p>
+							</div>
+
+							<div class="FilterSetting">
+								<input type="range" min="-100" max="100" step="1" value="0" data-filter="vibrance">
+								<span class="FilterValue">0</span>
+							</div>
+						</div>
+					
+						<div class="Filter">
+							<div class="FilterName">
+								<p>exposure</p>
+							</div>
+
+							<div class="FilterSetting">
+								<input type="range" min="-100" max="100" step="1" value="0" data-filter="exposure">
+								<span class="FilterValue">0</span>
+							</div>
+						</div>
+					
+						<div class="Filter">
+							<div class="FilterName">
+								<p>hue</p>
+							</div>
+
+							<div class="FilterSetting">
+								<input type="range" min="0" max="100" step="1" value="0" data-filter="hue">
+								<span class="FilterValue">0</span>
+							</div>
+						</div>
+					
+						<div class="Filter">
+							<div class="FilterName">
+								<p>sepia</p>
+							</div>
+
+							<div class="FilterSetting">
+								<input type="range" min="0" max="100" step="1" value="0" data-filter="sepia">
+								<span class="FilterValue">0</span>
+							</div>
+						</div>
+					
+						<div class="Filter">
+							<div class="FilterName">
+								<p>gamma</p>
+							</div>
+
+							<div class="FilterSetting">
+								<input type="range" min="0" max="10" step="0.1" value="0" data-filter="gamma">
+								<span class="FilterValue">0</span>
+							</div>
+						</div>
+					
+						<div class="Filter">
+							<div class="FilterName">
+								<p>noise</p>
+							</div>
+
+							<div class="FilterSetting">
+								<input type="range" min="0" max="100" step="1" value="0" data-filter="noise">
+								<span class="FilterValue">0</span>
+							</div>
+						</div>
+					
+						<div class="Filter">
+							<div class="FilterName">
+								<p>clip</p>
+							</div>
+
+							<div class="FilterSetting">
+								<input type="range" min="0" max="100" step="1" value="0" data-filter="clip">
+								<span class="FilterValue">0</span>
+							</div>
+						</div>
+					
+						<div class="Filter">
+							<div class="FilterName">
+								<p>sharpen</p>
+							</div>
+
+							<div class="FilterSetting">
+								<input type="range" min="0" max="100" step="1" value="0" data-filter="sharpen">
+								<span class="FilterValue">0</span>
+							</div>
+						</div>
+					
+						<div class="Filter">
+							<div class="FilterName">
+								<p>stackBlur</p>
+							</div>
+
+							<div class="FilterSetting">
+								<input type="range" min="0" max="20" step="1" value="0" data-filter="stackBlur">
+								<span class="FilterValue">0</span>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
