@@ -252,6 +252,8 @@ $(document).ready(function() {
 	}
 
 	function shareToFacebook() {
+		$("#send_caption, #caption").attr("disabled", "true");
+		$("#facebook_header").html("Uploading please wait...");
 		var caption = $("#caption").val();
 		var page, album;
 		FB.api("me/accounts", "GET", function(response){
@@ -285,9 +287,13 @@ $(document).ready(function() {
 						FB.api(album+"/photos", "POST", {access_token : token, url : path, name : caption}, function(response){
 							if (response.id){
 								alert("Your photo was successfully posted to MIT TechX's Facebook page!  ");
+								$("#modal-facebook").modal("hide");
+								$("#send_caption, #caption").removeAttr("disabled");
 							} else {
 								alert("Something seems to be wrong, please ask a TechX member for help.  ");
+								$("#send_caption").removeAttr("disabled");
 							}
+							$("#facebook_header").html("If you would like to upload this photo to the MIT TechX Facebook page, please enter a caption for the photo.");
 							$.ajax({
 								method : "POST",
 								url : "php/delete_image_file.php",
@@ -311,6 +317,11 @@ $(document).ready(function() {
 		shareToFacebook();
 		return false;
 	});
+
+	$("#send_caption").click(function(){
+		shareToFacebook();
+		return false;
+	})
 
 	$('#modal-email').on('hidden.bs.modal', function (e) {
 		$('#emailAlert').css('display', 'none');
