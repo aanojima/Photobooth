@@ -26,10 +26,10 @@
 					<div class="menu_item" style="text-align:center">
 						<strong><u>SETTINGS</u></strong>
 					</div><br>
-					<div class="menu_item setting editor">
+					<!-- <div class="menu_item setting editor">
 						<label for="mirrored"><b>MIRROR:</b></label>
 						<input id="mirrored" type="checkbox" name="mirrored" checked>
-					</div><br>
+					</div><br> -->
 					<div class="menu_item setting">
 						<label for="countdown"><b>COUNTDOWN:</b></label>
 						<input id="countdown" type="checkbox" name="countdown" checked>
@@ -208,6 +208,30 @@
 			    </div><!-- /.modal-content -->
 			  </div><!-- /.modal-dialog -->
 			</div><!-- /.modal -->
+
+			<div class="modal fade" id="modal-facebook">
+			  <div class="modal-dialog" id="facebook_form">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			        <h4 class="modal-title">Enter a caption for the photo.</h4>
+			      </div>
+			      <div class="modal-body">
+			        <form role="fb_form">
+			        	<div class="form-group">
+				        	<label for="exampleInputCaption1">Photo caption</label>
+	    					<input type="text" id="caption" class="form-control" placeholder="Enter caption">
+    					</div>
+    					<div class="modal-footer">
+    						<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+	    					<button type="button" id="send_caption" class="btn btn-primary">Upload</button>
+    					</div>
+    				</form>
+			      </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+
 
 			<img id="count3" class="count" src="images/3.png"></img>
 			<img id="count2" class="count" src="images/2.png"></img>

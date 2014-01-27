@@ -1,5 +1,3 @@
-var resetDefault = function(){}
-
 var caman, filters, updateFilters;
 
 $(document).ready(function() {
@@ -249,33 +247,75 @@ $(document).ready(function() {
 		});
 	}
 
-	// function shareToFacebook() {
-	// 	FB.getAuthResponse();
-	// 	var wallPost = {
-	// 		message : "testing...",
-	// 		picture: "http://static.tumblr.com/44e684098f0ac7c33a6640c20556b923/jxahzkb/fZ5mod2rw/tumblr_static_dog-logo.jpg"
-	// 	};
-		
-	// 	FB.api('/me/feed', 'post', wallPost , function(response) {
-	// 		if (!response || response.error) {
-	// 			alert('Error occured');
-	// 		} else {
-	// 			alert('Post ID: ' + response);
-	// 		}
-	// 	});
-	// }
+	function inputCaption() {
+		$("#modal-facebook").modal("show");
+	}
+
+	function shareToFacebook() {
+		var caption = $("#caption").val();
+		var page, album;
+		FB.api("me/accounts", "GET", function(response){
+			var token = response.data[0].access_token;
+			var page = response.data[0].id;
+			FB.api(page+"/albums", "GET", {access_token : token}, function(response){
+				// Find the Album ID with name TechX Photobooth 2014
+				var album;
+				for (var i in response.data){
+					if (response.data[i].name == "TechX Photobooth 2014"){
+						album = response.data[i].id;
+						console.log("Album: " + album);
+						break;
+					}
+				}
+				// Create New Album if it doesn't exist
+				if (!album){
+					FB.api(page+"/albums", "POST", {access_token : token, name : "TechX Photobooth 2014"}, function(response){
+						var album = response.id;
+					});
+				}
+				// Add Photo to Album
+				$.ajax({
+					method : "POST",
+					url : "php/create_image_file.php",
+					data : {"image" : canvas.toDataURL('image/png')},
+					success : function(result){
+						var filename = result;
+						var path = "http://aanojima.scripts.mit.edu/photobooth/php/" + filename;
+						console.log("Posting Photo: " + path);
+						FB.api(album+"/photos", "POST", {access_token : token, url : path, name : caption}, function(response){
+							if (response.id){
+								alert("Your photo was successfully posted to MIT TechX's Facebook page!  ");
+							} else {
+								alert("Something seems to be wrong, please ask a TechX member for help.  ");
+							}
+							$.ajax({
+								method : "POST",
+								url : "php/delete_image_file.php",
+								data : {filename : filename}
+							});
+						});
+					}
+				})		
+			});
+		});
+	}
 
 	// Event Listeners //
 
 	$('#facebook_button').click(function(){
-		var image = document.createElement("img");
-		image.src = canvas.toDataURL('image/jpeg');
-		document.body.appendChild(image);
+		inputCaption();
+		return false;
+	});
+
+	$("#facebook_form").submit(function(){
+		shareToFacebook();
+		return false;
 	});
 
 	$('#modal-email').on('hidden.bs.modal', function (e) {
 		$('#emailAlert').css('display', 'none');
 	});
+
 	$('#email_form').submit(function(){
 		sendEmail();
 		return false;
