@@ -40,6 +40,7 @@ $(document).ready(function() {
 		});
 	}, 300);
 	
+	// SOCKETS
 	// var connection = new WebSocket("ws://athena.dialup.mit.edu:1234", 'control-protocol');
 	// connection.onopen = function(event){
 	// 	console.log("Connection open...");
@@ -47,7 +48,6 @@ $(document).ready(function() {
 	// connection.onclose = function(event){
 	// 	console.log("Connection closed...");
 	// }
-
 	// connection.addEventListener("message", function(event) {
 	// 	console.log(event.data);
 	// 	results = event.data.split(",");
@@ -74,17 +74,6 @@ $(document).ready(function() {
 	$("#camera").css({"border" : "0px"});
 	$(".editor").hide();
 	$(".setting").show();
-
-	var filters = {
-		"hue-rotate" : "(0deg)",
-		"grayscale" : "(0%)",
-		"sepia" : "(0%)",
-		"blur" : "(1px)",
-		"invert" : "(0%)",
-		"brightness" : "(100%)",
-		"contrast" : "(100%)",
-		"saturate" : "(100%)",
-	}
 
 	var streaming	= false,
 		video		= document.querySelector('#video'),
@@ -191,104 +180,14 @@ $(document).ready(function() {
 		$("#blackwhite").fadeIn(200, function(){$("#blackwhite").fadeOut(200)})
 		$(".setting").hide();
 		$(".editor").show();
+		$(".Filter").css("display", $("#settings").width() == 300 ? "block" : "none");
 		
 		// Capture Image from Video and Write to Canvas
 		canvas.width = width;
 		canvas.height = height;
 		var ctx = canvas.getContext('2d')
 		ctx.drawImage(video, 0, 0, width, height);
-		// data.push(canvas.toDataURL('image/png'));
-		// $.ajax({
-		// 	method : "POST",
-		// 	url : "php/create_image_file.php",
-		// 	data : {image : canvas.toDataURL('image/png')},
-		// 	success : function(result){
-		// 		$("#canvas").attr("data-caman-hidpi", "php/" + result);
-		// 		caman = Caman("#canvas");
-		// 	},
-		// });
 		caman = Caman("#canvas");
-
-		// Caman("#canvas", function(){
-		// 	var ctx = this;
-		// 	$("#brightness").on("change", function(event, delta){
-		// 		console.log(event, delta);
-		// 		var value = $(this).val();
-		// 		ctx.brightness(-1 * value);
-		// 		ctx.brightness(value).render();
-		// 		console.log(value);
-		// 	});
-		// 	// channels*
-		// 	$("#clip").on("change", function(){
-		// 		var value = $(this).val();
-		// 		ctx.clip(-1 * value);
-		// 		ctx.clip(value).render();
-		// 		console.log(value);
-		// 	});
-		// 	// colorize*
-		// 	$("#contrast").on("change", function(){
-		// 		var value = $(this).val();
-		// 		ctx.contrast(-1 * value);
-		// 		ctx.contrast(value).render();
-		// 		console.log(value);
-		// 	});
-		// 	// curves*
-		// 	$("#exposure").on("change", function(){
-		// 		var value = $(this).val();
-		// 		ctx.exposure(-1 * value);
-		// 		ctx.exposure(value).render();
-		// 		console.log(value);
-		// 	});
-		// 	// fillColor*
-		// 	$("#gamma").on("change", function(){
-		// 		var value = $(this).val();
-		// 		ctx.gamma(-1 * value);
-		// 		ctx.gamma(value).render();
-		// 		console.log(value);
-		// 	});
-		// 	$("#greyscale").on("change", function(){
-		// 		var value = $(this).val();
-		// 		ctx.greyscale(-1 * value);
-		// 		ctx.greyscale(value).render();
-		// 		console.log(value);
-		// 	});
-		// 	$("#hue").on("change", function(){
-		// 		var value = $(this).val();
-		// 		ctx.hue(-1 * value);
-		// 		ctx.hue(value).render();
-		// 		console.log(value);
-		// 	});
-		// 	$("#invert").on("change", function(){
-		// 		var value = $(this).val();
-		// 		ctx.invert(-1 * value);
-		// 		ctx.invert(value).render();
-		// 		console.log(value);
-		// 	});
-		// 	$("#noise").on("change", function(){
-		// 		var value = $(this).val();
-		// 		ctx.noise(-1 * value);
-		// 		ctx.noise(value).render();
-		// 		console.log(value);
-		// 	});
-		// 	$("#saturation").on("change", function(){
-		// 		var value = $(this).val();
-		// 		ctx.saturation(-1 * value);
-		// 		ctx.saturation(value).render();
-		// 		console.log(value);
-		// 	});
-		// 	$("#vibrance").on("change", function(){
-		// 		var value = $(this).val();
-		// 		ctx.vibrance(-1 * value);
-		// 		ctx.vibrance(value).render();
-		// 		console.log(value);
-		// 	});
-		// 	$("#sepia").on("change", function(){
-		// 		var value = $(this).val();
-		// 		ctx.sepia(-1 * value);
-		// 		ctx.sepia(value).render();
-		// 		console.log(value);
-		// 	});
-		// });
 
 	}
 
@@ -308,52 +207,13 @@ $(document).ready(function() {
 			$("#email_form").modal('hide');
 			$(".editor").hide();
 			$(".setting").show();
+			$(".Filter").css("display", "none");
 			canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
 			$("#canvas").removeAttr("data-caman-id");
 			caman = null;
 		});
 
 	}
-
-// brightness
-// channels*
-// clip
-// colorize*
-// contrast
-// curves*
-// exposure
-// fillColor*
-// gamma
-// greyscale
-// hue
-// invert
-// noise
-// saturation
-// vibrance
-// sepia
-
-	function compileFilterCSS(){
-		var output = "";
-		for (var name in filters){
-			var value = filters[name];
-			output = output + name + value + " ";
-		}
-		return output;
-	}
-
-	var filters = {};
-
-	// updateFilters = _.throttle(function(){
-	// 	caman.revert(false);
-	// 	var sliders = $(".filter").toArray();
-	// 	for (var i in sliders){
-	// 		slider = sliders[i];
-	// 		caman[slider.id](parseFloat(slider.value));
-	// 		caman.render();
-	// 		console.log(slider.id, slider.value)
-	// 	}
-		
-	// }, 300);
 
 	function inputEmail() {
 		$("#modal-email").modal('show');
@@ -445,8 +305,22 @@ $(document).ready(function() {
 	});
 
 	$("#settings_button").click(function(e){
-		var settings_width = $("#settings").css("width") == "300px" ? "0px" : "300px";
-		$("#settings").animate({"width" : settings_width});	
+		var opening = $("#settings").width() == 0;
+		var postphoto = $("#canvas").css("display") == "block";
+		var settings_width = opening ? "300px" : "0px";
+		if (opening){
+			$("#settings").animate({"width" : settings_width}, function(){
+				if (postphoto){
+					$(".Filter").css("display", "block");
+				}
+			});	
+		} else {
+			if (postphoto){
+				$(".Filter").css({"display" : "none"});	
+			}
+			$("#settings").animate({"width" : settings_width});
+		}
+		
 	});
 
 	$("#mirrored").click(function(){
