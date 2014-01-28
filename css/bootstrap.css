@@ -2323,7 +2323,7 @@ fieldset[disabled] .btn {
   color: #ffffff;
   background-color: #333333;
   border: none;
-  font-family: "RobotoM";
+  font-family: "RobotoL";
   text-transform: uppercase;
 }
 
@@ -2335,7 +2335,7 @@ fieldset[disabled] .btn {
   color: #333333;
   background-color: #555555;
   border: none;
-  font-family: "RobotoM";
+  font-family: "RobotoL";
 }
 
 .btn-default:active,
