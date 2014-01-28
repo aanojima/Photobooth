@@ -10,10 +10,6 @@
   font-family: "RobotoR";
   src: url(../fonts/Roboto/Roboto-Regular.ttf) format("truetype");
 }
-@font-face{
-  font-family: "RobotoM";
-  src: url(../fonts/Roboto/Roboto-Medium.ttf) format("truetype");
-}
 
 
 /*!
@@ -56,7 +52,7 @@ template {
 }
 
 html {
-  font-family: "RobotoR";
+  font-family: "RobotoL";
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
@@ -321,7 +317,7 @@ html {
 }
 
 body {
-  font-family: "RobotoR", Helvetica, Arial, sans-serif;
+  font-family: "RobotoL", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.428571429;
   color: #333333;
@@ -415,7 +411,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: "RobotoR", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
@@ -2320,25 +2316,19 @@ fieldset[disabled] .btn {
 }
 
 .btn-default {
-  color: #ffffff;
-  background-color: #333333;
-  border: none;
-  font-family: "RobotoL";
-  text-transform: uppercase;
-  width: 130px;
+  color: #333333;
+  background-color: #ffffff;
+  border-color: #cccccc;
 }
 
-.btn-default:hover{
-  color: #ffffff;
-  background-color: #555555;
-  border: none;
-  font-family: "RobotoL";
-}
+.btn-default:hover,
 .btn-default:focus,
 .btn-default:active,
 .btn-default.active,
 .open .dropdown-toggle.btn-default {
   color: #333333;
+  background-color: #ebebeb;
+  border-color: #adadad;
 }
 
 .btn-default:active,
@@ -2368,15 +2358,13 @@ fieldset[disabled] .btn-default.active {
 
 .btn-default .badge {
   color: #ffffff;
-  background-color: #333333;
+  background-color: #fff;
 }
 
 .btn-primary {
   color: #ffffff;
   background-color: #428bca;
   border-color: #357ebd;
-  text-transform: uppercase;
-  font-family: "RobotoL";
 }
 
 .btn-primary:hover,
@@ -2714,7 +2702,6 @@ input[type="button"].btn-block {
 .glyphicon {
   position: relative;
   top: 1px;
-  margin-right: 3px;
   display: inline-block;
   font-family: 'Glyphicons Halflings';
   -webkit-font-smoothing: antialiased;
