@@ -2325,6 +2325,7 @@ fieldset[disabled] .btn {
   border: none;
   font-family: "RobotoL";
   text-transform: uppercase;
+  width: 130px;
 }
 
 .btn-default:hover,
@@ -2332,7 +2333,7 @@ fieldset[disabled] .btn {
 .btn-default:active,
 .btn-default.active,
 .open .dropdown-toggle.btn-default {
-  color: #333333;
+  color: #ffffff;
   background-color: #555555;
   border: none;
   font-family: "RobotoL";
@@ -2372,6 +2373,8 @@ fieldset[disabled] .btn-default.active {
   color: #ffffff;
   background-color: #428bca;
   border-color: #357ebd;
+  text-transform: uppercase;
+  font-family: "RobotoL";
 }
 
 .btn-primary:hover,
