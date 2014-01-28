@@ -10,6 +10,10 @@
   font-family: "RobotoR";
   src: url(../fonts/Roboto/Roboto-Regular.ttf) format("truetype");
 }
+@font-face{
+  font-family: "RobotoM";
+  src: url(../fonts/Roboto/Roboto-Medium.ttf) format("truetype");
+}
 
 
 /*!
@@ -52,7 +56,7 @@ template {
 }
 
 html {
-  font-family: "RobotoT";
+  font-family: "RobotoR";
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
@@ -317,7 +321,7 @@ html {
 }
 
 body {
-  font-family: "RobotoT", Helvetica, Arial, sans-serif;
+  font-family: "RobotoR", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.428571429;
   color: #333333;
@@ -2316,9 +2320,10 @@ fieldset[disabled] .btn {
 }
 
 .btn-default {
-  color: #333333;
-  background-color: #ffffff;
-  border-color: #cccccc;
+  color: #ffffff;
+  background-color: #333333;
+  border: none;
+  font-family: "RobotoM";
 }
 
 .btn-default:hover,
@@ -2326,9 +2331,10 @@ fieldset[disabled] .btn {
 .btn-default:active,
 .btn-default.active,
 .open .dropdown-toggle.btn-default {
-  color: #333333;
-  background-color: #ebebeb;
-  border-color: #adadad;
+  color: #ffffff;
+  background-color: #555555;
+  border: none;
+  font-family: "RobotoM";
 }
 
 .btn-default:active,
