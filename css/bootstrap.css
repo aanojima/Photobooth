@@ -2328,15 +2328,17 @@ fieldset[disabled] .btn {
   width: 130px;
 }
 
-.btn-default:hover,
-.btn-default:focus,
-.btn-default:active,
-.btn-default.active,
-.open .dropdown-toggle.btn-default {
+.btn-default:hover{
   color: #ffffff;
   background-color: #555555;
   border: none;
   font-family: "RobotoL";
+}
+.btn-default:focus,
+.btn-default:active,
+.btn-default.active,
+.open .dropdown-toggle.btn-default {
+  color: #333333;
 }
 
 .btn-default:active,
