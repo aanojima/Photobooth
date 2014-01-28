@@ -3,13 +3,18 @@ var caman, filters, updateFilters;
 $(document).ready(function() {
 
 	var booleanA, booleanB, gObject = {}.hasOwnProperty;
-	
+
+	original_images_src = [];
+	photo_count = 1;
 	caman = null;
 	filters = {};
+	imageFilters = [];
 	booleanA = false;
 	booleanB = false;
 
 	updateFilters = _.throttle(function(){
+		var index = $("#canvas").attr("index");
+		imageFilters[index] = filters;
 		var filter, value;
 		if (booleanA) {
 			booleanB = true;
@@ -19,7 +24,7 @@ $(document).ready(function() {
 		}
 		booleanA = true;
 		caman.revert(false);
-		for (filter in filters) {
+		for (var filter in filters) {
 			if (!gObject.call(filters, filter)) {
 				continue;
 			}
@@ -31,12 +36,30 @@ $(document).ready(function() {
 			caman[filter](value);
 		}
 		return caman.render(function () {
+			$("#filmstrip img")[index].src = canvas.toDataURL('image/png');
+			var filterstring = filtersToString(filters);
+			$("#filmstrip img")[index].filterstring = filterstring;
 			booleanA = false;
 			if (booleanB) {
-				return updateFilters()
+				return updateFilters();
 			}
 		});
 	}, 300);
+
+	function restoreImageFilter() {
+		var index = $("#canvas").attr("index");
+		var filter = imageFilters[index];
+		for (var type in filter) {
+			var value = filter[type];
+			value = parseFloat(value, 10);
+			if (value === 0) {
+				continue;
+			}
+			caman[type](value);
+		}
+		caman.render();
+
+	}
 	
 	// SOCKETS
 	// var connection = new WebSocket("ws://athena.dialup.mit.edu:1234", 'control-protocol');
@@ -158,6 +181,8 @@ $(document).ready(function() {
 			$(".pre-photo_button").css("display", "none");
 			$("#settings_button").css({"width" : "110px", "height" : "50px"});
 			$(".post-photo_button").css("display", "inline-block");
+			$(canvas).attr("index", $("#filmstrip img").length - 1);
+			caman = Caman("#canvas");
 		}
 		else { 
 			// Take Picture and Repeat (recurse)
@@ -169,9 +194,9 @@ $(document).ready(function() {
 	function takePicture() {
 
 		// Animations
-		$("#camera").css({"border" : "15px solid white"});
-		$("#settings").css({"background" : "white"});
-		$("#settings_menu").css({"color" : "black"});
+		// $("#camera").css({"border" : "15px solid white"});
+		// $("#settings").css({"background" : "white"});
+		// $("#settings_menu").css({"color" : "black"});
 		$("#canvas").css('display', 'block');
 		$("#video").css('display', 'none');
 		$("#blackwhite").css({"background" : "white"});
@@ -183,10 +208,38 @@ $(document).ready(function() {
 		// Capture Image from Video and Write to Canvas
 		canvas.width = width;
 		canvas.height = height;
-		var ctx = canvas.getContext('2d')
+		var ctx = canvas.getContext('2d');
 		ctx.drawImage(video, 0, 0, width, height);
-		caman = Caman("#canvas");
-
+		
+		// var new_canvas = document.createElement("canvas");
+		// new_canvas.width = width*0.185;
+		// new_canvas.height = height*0.185;
+		// var new_ctx = new_canvas.getContext('2d');
+		// var num_canvas = parseInt($("input[name='times']").val());
+		// new_ctx.drawImage(video, 0, 0, 0.185*width, (0.185)*height);
+		// $(new_canvas).addClass("side_canvas");
+		// var image = new Image();
+		var img = document.createElement("img");
+		$(img).height("20%");
+		var filterstring = filtersToString({});
+		$(img).attr("filterstring", filterstring);
+		var index = $("#filmstrip img").length;
+		new_src = canvas.toDataURL("image/png");
+		img.src = new_src;
+		original_images_src.push(new_src);
+		imageFilters.push({});
+		$(img).on("click", function(event){
+			$("#canvas").removeAttr("data-caman-id");
+			delete caman;
+			var tempImg = document.createElement('img');
+			tempImg.src = original_images_src[index];
+			ctx.drawImage(tempImg, 0, 0);
+			$(canvas).attr("index", index);
+			caman = Caman("#canvas", function(){
+				restoreImageFilter();
+			});
+		});
+		document.getElementById("filmstrip").appendChild(img);
 	}
 
 	function goBack() {
@@ -210,7 +263,17 @@ $(document).ready(function() {
 			$("#canvas").removeAttr("data-caman-id");
 			caman = null;
 		});
-
+		// TODO
+		original_images_src = [];
+		for (var i in imageFilters){
+			delete imageFilters[i];
+		}
+		imageFilters = [];
+		var filmstrip = $("#filmstrip")[0];
+		for (var i = filmstrip.childNodes.length - 1; i >= 0; i--){
+			var child = filmstrip.childNodes[i];
+			filmstrip.removeChild(child);
+		}
 	}
 
 	function inputEmail() {
@@ -301,9 +364,34 @@ $(document).ready(function() {
 							});
 						});
 					}
-				})		
+				});
 			});
 		});
+	}
+
+	function filtersToString(filters_input){
+		var output = "";
+		for (var filter in filters_input){
+			var value = filters_input[filter];
+			var addon = filter + ":" + value + ",";
+			output += addon;
+		}
+		return output;
+	}
+
+	function stringToFilter(string_input){
+		filters = {}
+		var temp = string_input.split(",");
+		for (var i in temp){
+			var curr = temp[i].split(":");
+			if (curr[0] == ''){
+				continue;
+			}
+			var key = curr[0];
+			var val = curr[1];
+			filters[key] = val;
+		}
+		return filters;
 	}
 
 	// Event Listeners //
@@ -352,7 +440,7 @@ $(document).ready(function() {
 		value = $(this).val();
 		filters[filter] = value;
 		$(this).find("~ .FilterValue").html(value);
-		return updateFilters();
+		return updateFilters("HI");
 	});
 
 	$("#settings_button").click(function(e){
