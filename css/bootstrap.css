@@ -2324,6 +2324,7 @@ fieldset[disabled] .btn {
   background-color: #333333;
   border: none;
   font-family: "RobotoM";
+  text-transform: uppercase;
 }
 
 .btn-default:hover,
@@ -2708,6 +2709,7 @@ input[type="button"].btn-block {
 .glyphicon {
   position: relative;
   top: 1px;
+  margin-right: 3px;
   display: inline-block;
   font-family: 'Glyphicons Halflings';
   -webkit-font-smoothing: antialiased;
