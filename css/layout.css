@@ -1,10 +1,35 @@
+@font-face{
+	font-family: "RobotoL";
+	src: url(../fonts/Roboto/Roboto-Light.ttf) format("truetype");
+}
+@font-face{
+	font-family: "RobotoT";
+	src: url(../fonts/Roboto/Roboto-Thin.ttf) format("truetype");
+}
+@font-face{
+	font-family: "RobotoR";
+	src: url(../fonts/Roboto/Roboto-Regular.ttf) format("truetype");
+}
+
+
 body {
 	background-image: url("http://aanojima.scripts.mit.edu/photobooth/images/bg-web.png");
 	min-width : 800px;
 }
 
-#header {
+.textcenter {
 	text-align: center;
+}
+
+#header{
+	color: white;
+	font-family: "RobotoR";
+	text-shadow: 3px 3px 10px #000;
+	font-size: 60px;
+}
+
+.light{
+	font-family:"RobotoT";
 }
 
 #content {
