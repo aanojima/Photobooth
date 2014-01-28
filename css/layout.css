@@ -188,6 +188,23 @@ input[type='checkbox'] {
 	z-index: 2;
 }
 
+#filmstrip {
+	height : 100%;
+	/*width : 300px;*/
+	/*background-color: white;*/
+	position : absolute;
+	/*border : 15px solid white;*/
+	left : 100%;
+	top : 0px;
+	margin-left : 20px;
+
+}
+
+.side_canvas {
+	margin : 0px;
+	padding : 0px;
+}
+
 .count {
 	display : none;
 	position : absolute;
