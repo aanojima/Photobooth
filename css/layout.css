@@ -127,13 +127,13 @@ input[type='checkbox'] {
 	width : 50px;
 	display : none;
 	margin-top: 10px;
-	margin-right:10px;
-	margin-left: 10px;
+	margin-right:20px;
 }
 
 #footer img{
 	width: 50px;
 	margin-right: 20px;
+	margin-left: 20px;
 }
 
 /* Email form 
