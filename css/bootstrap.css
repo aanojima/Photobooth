@@ -2361,16 +2361,16 @@ fieldset[disabled] .btn-default.active {
   background-color: #fff;
 }
 
-.btn-picture img{
+.btn-picture {
   height: 50px;
-  width: 50px;
+
 }
 
-.btn-picture:hover img,
-.btn-picture:focus img,
-.btn-picture:active img,
-.btn-picture.active img,
-.open .dropdown-toggle.btn-default img{
+.btn-picture:hover ,
+.btn-picture:focus ,
+.btn-picture:active ,
+.btn-picture.active ,
+.open .dropdown-toggle.btn-picture {
   -webkit-filter: brightness(1.2);
   cursor: pointer;
 }
