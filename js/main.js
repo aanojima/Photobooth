@@ -254,7 +254,7 @@ $(document).ready(function() {
 			$("#settings_menu").css({"color" : "white"});
 			$(".pre-photo_button").css("display", "inline-block");
 			$(".post-photo_button").css("display", "none");
-			$("#settings_button").css({"width" : "200px"});
+			$("#settings_button").css({"width" : "50px"});
 			$("#email_form").modal('hide');
 			$(".editor").hide();
 			$(".setting").show();
