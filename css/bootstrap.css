@@ -2372,6 +2372,7 @@ fieldset[disabled] .btn-default.active {
 .btn-picture.active img,
 .open .dropdown-toggle.btn-default img{
   -webkit-filter: brightness(1.2);
+  cursor: pointer;
 }
 
 .btn-picture.disabled,
