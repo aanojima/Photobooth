@@ -195,6 +195,7 @@ input[type='checkbox'] {
 	left: 50%;
 	margin-left: -65.5px;
 	margin-top: -127px;
+	-webkit-filter: invert(1);
 }
 
 #footer {
