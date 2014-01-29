@@ -97,7 +97,7 @@ input[type='checkbox'] {
 	width : 100%;
 	max-width: 800px;
 	margin : auto;
-	border : 15px solid black;
+	box-shadow: 5px 5px 10px #333333;
 	position : relative;
 }
 
@@ -108,7 +108,7 @@ input[type='checkbox'] {
 
 .pre-photo_button {
 	height: 50px;
-	width : 200px;
+	width : 50px;
 	display : none;
 	margin : auto;
 	margin-top: 10px;
@@ -119,35 +119,21 @@ input[type='checkbox'] {
 	margin-top: 10px;
 	margin-right: 20px;
 	height : 50px;
+	width: 50px;
 }
 
 .post-photo_button {
 	height: 50px;
-	width : 140px;
+	width : 50px;
 	display : none;
 	margin-top: 10px;
 	margin-right:20px;
 }
-#facebook_button {
-	border:none;
-	color:white;
-	background-color: #3b5998;
-/*	background-image: -webkit-gradient(linear,left top,left bottom,from(#6d84b3),to(#3c5a98));
-	background-image: -webkit-linear-gradient(#6d84b3,#3c5a98);*/
-}
-#facebook_button:hover {
-	background-color: #374A77;
-}
 
-#twitter_button {
-	border:none;
-	color:white;
-	background-color: #6fdbff;
-/*	background-image: -webkit-gradient(linear,left top,left bottom,from(#6fdbff),to(#17aee5));
-	background-image: -webkit-linear-gradient(#6fdbff,#17aee5);*/
-}
-#twitter_button:hover {
-	background-color: #59B1CE;
+#footer img{
+	width: 50px;
+	margin-right: 20px;
+	margin-left: 20px;
 }
 
 /* Email form 
@@ -212,9 +198,11 @@ input[type='checkbox'] {
 	left: 50%;
 	margin-left: -65.5px;
 	margin-top: -127px;
+	-webkit-filter: invert(1);
 }
 
 #footer {
 	text-align: center;
 	min-height: 80px;
+	margin-top: 10px;
 }

@@ -140,8 +140,8 @@ $(document).ready(function() {
 		
 		// Other Initial Display Initializers
 		$("#start_button").css("display", "inline-block");
-		$("#settings_button").css({"display" : "inline-block", "height" : "50px", "width" : "200px"});
-		$("#camera").css({"border" : "15px solid black"});
+		$("#settings_button").css({"display" : "inline-block", "height" : "50px", "width" : "50px"});
+		$("#camera").css({"box-shadow" : "5px 5px 10px #333333"});
 		
 		if (!streaming) {
 			height = video.videoHeight / (video.videoWidth/width);
@@ -179,7 +179,7 @@ $(document).ready(function() {
 			// Animations for last picture
 			$(".pre-photo_button").removeAttr("disabled");
 			$(".pre-photo_button").css("display", "none");
-			$("#settings_button").css({"width" : "110px", "height" : "50px"});
+			$("#settings_button").css({"width" : "50px", "height" : "50px"});
 			$(".post-photo_button").css("display", "inline-block");
 			$(canvas).attr("index", $("#filmstrip img").length - 1);
 			$(".setting").hide();
@@ -246,7 +246,7 @@ $(document).ready(function() {
 		delete data;
 		$("#blackwhite").css({"background" : "black"});
 		$("#blackwhite").fadeIn(200, function(){
-			$("#camera").css({"border" : "15px solid black"});
+			$("#camera").css({"box-shadow" : "5px 5px 10px #333333"});
 			$("#blackwhite").fadeOut(200);
 			$("#video").css("display", "block");
 			$("#canvas").css("display", "none");
@@ -254,7 +254,7 @@ $(document).ready(function() {
 			$("#settings_menu").css({"color" : "white"});
 			$(".pre-photo_button").css("display", "inline-block");
 			$(".post-photo_button").css("display", "none");
-			$("#settings_button").css({"width" : "200px"});
+			$("#settings_button").css({"width" : "50px"});
 			$("#email_form").modal('hide');
 			$(".editor").hide();
 			$(".setting").show();
