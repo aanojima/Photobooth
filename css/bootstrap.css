@@ -2363,6 +2363,7 @@ fieldset[disabled] .btn-default.active {
 
 .btn-picture img{
   height: 50px;
+  width: 50px;
 }
 
 .btn-picture:hover img,
