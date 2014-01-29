@@ -246,7 +246,7 @@ $(document).ready(function() {
 		delete data;
 		$("#blackwhite").css({"background" : "black"});
 		$("#blackwhite").fadeIn(200, function(){
-			$("#camera").css({"border" : "15px solid black"});
+			$("#camera").css({"box-shadow" : "5px 5px 10px #333333"});
 			$("#blackwhite").fadeOut(200);
 			$("#video").css("display", "block");
 			$("#canvas").css("display", "none");
