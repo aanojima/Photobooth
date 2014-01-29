@@ -194,7 +194,7 @@ $(document).ready(function() {
 	function takePicture() {
 
 		// Animations
-		$("#camera").css({"border" : "15px solid white"});
+		// $("#camera").css({"border" : "15px solid white"});
 		// $("#settings").css({"background" : "white"});
 		// $("#settings_menu").css({"color" : "black"});
 		$("#canvas").css('display', 'block');
