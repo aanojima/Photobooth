@@ -128,27 +128,7 @@ input[type='checkbox'] {
 	margin-top: 10px;
 	margin-right:20px;
 }
-#facebook_button {
-	border:none;
-	color:white;
-	background-color: #3b5998;
-/*	background-image: -webkit-gradient(linear,left top,left bottom,from(#6d84b3),to(#3c5a98));
-	background-image: -webkit-linear-gradient(#6d84b3,#3c5a98);*/
-}
-#facebook_button:hover {
-	background-color: #374A77;
-}
 
-#twitter_button {
-	border:none;
-	color:white;
-	background-color: #6fdbff;
-/*	background-image: -webkit-gradient(linear,left top,left bottom,from(#6fdbff),to(#17aee5));
-	background-image: -webkit-linear-gradient(#6fdbff,#17aee5);*/
-}
-#twitter_button:hover {
-	background-color: #59B1CE;
-}
 
 /* Email form 
 ===============
