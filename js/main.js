@@ -179,7 +179,7 @@ $(document).ready(function() {
 			// Animations for last picture
 			$(".pre-photo_button").removeAttr("disabled");
 			$(".pre-photo_button").css("display", "none");
-			$("#settings_button").css({"width" : "110px", "height" : "50px"});
+			$("#settings_button").css({"width" : "50px", "height" : "50px"});
 			$(".post-photo_button").css("display", "inline-block");
 			$(canvas).attr("index", $("#filmstrip img").length - 1);
 			caman = Caman("#canvas");
