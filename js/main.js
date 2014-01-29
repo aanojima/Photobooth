@@ -141,7 +141,7 @@ $(document).ready(function() {
 		// Other Initial Display Initializers
 		$("#start_button").css("display", "inline-block");
 		$("#settings_button").css({"display" : "inline-block", "height" : "50px", "width" : "50px"});
-		$("#camera").css({"border" : "15px solid black"});
+		$("#camera").css({"box-shadow" : "5px 5px 10px #333333"});
 		
 		if (!streaming) {
 			height = video.videoHeight / (video.videoWidth/width);
