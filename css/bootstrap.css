@@ -2361,6 +2361,37 @@ fieldset[disabled] .btn-default.active {
   background-color: #fff;
 }
 
+.btn-picture img{
+  height: 50px;
+}
+
+.btn-picture:hover img,
+.btn-picture:focus img,
+.btn-picture:active img,
+.btn-picture.active img,
+.open .dropdown-toggle.btn-default img{
+  -webkit-filter: brightness(1.2);
+}
+
+.btn-picture.disabled,
+.btn-picture[disabled],
+fieldset[disabled] .btn-picture,
+.btn-picture.disabled:hover,
+.btn-picture[disabled]:hover,
+fieldset[disabled] .btn-picture:hover,
+.btn-picture.disabled:focus,
+.btn-picture[disabled]:focus,
+fieldset[disabled] .btn-picture:focus,
+.btn-picture.disabled:active,
+.btn-picture[disabled]:active,
+fieldset[disabled] .btn-picture:active,
+.btn-picture.disabled.active,
+.btn-picture[disabled].active,
+fieldset[disabled] .btn-picture.active {
+  border-color: #cccccc;
+  -webkit-filter: brightness(0.3);
+}
+
 .btn-primary {
   color: #ffffff;
   background-color: #428bca;
