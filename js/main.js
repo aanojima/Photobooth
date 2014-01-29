@@ -92,7 +92,7 @@ $(document).ready(function() {
 	// 	}
 	// });
 
-	$("#camera").css({"border" : "0px"});
+	// $("#camera").css({"border" : "0px"});
 	$(".editor").hide();
 	$(".setting").show();
 
@@ -139,9 +139,10 @@ $(document).ready(function() {
 	video.addEventListener('canplay', function(ev){
 		
 		// Other Initial Display Initializers
+		$("#camera").css("box-shadow", "5px 5px 10px #333333");
 		$("#start_button").css("display", "inline-block");
-		$("#settings_button").css({"display" : "inline-block", "height" : "50px", "width" : "50px"});
-		$("#camera").css({"box-shadow" : "5px 5px 10px #333333"});
+		$("#settings_button").css({"display" : "inline-block", "height" : "50px"});
+		// $("#camera").css({"border" : "15px solid black"});
 		
 		if (!streaming) {
 			height = video.videoHeight / (video.videoWidth/width);
@@ -179,7 +180,7 @@ $(document).ready(function() {
 			// Animations for last picture
 			$(".pre-photo_button").removeAttr("disabled");
 			$(".pre-photo_button").css("display", "none");
-			$("#settings_button").css({"width" : "50px", "height" : "50px"});
+			$("#settings_button").css({"height" : "50px"});
 			$(".post-photo_button").css("display", "inline-block");
 			$(canvas).attr("index", $("#filmstrip img").length - 1);
 			$(".setting").hide();
@@ -189,7 +190,7 @@ $(document).ready(function() {
 		else { 
 			// Take Picture and Repeat (recurse)
 			takePicture();
-			setTimeout(function(){multiplePhotos(times-1);}, 600);
+			setTimeout(function(){multiplePhotos(times-1);}, 800);
 		}
 	}
 
@@ -199,54 +200,58 @@ $(document).ready(function() {
 		// $("#camera").css({"border" : "15px solid white"});
 		// $("#settings").css({"background" : "white"});
 		// $("#settings_menu").css({"color" : "black"});
-		$("#canvas").css('display', 'block');
-		$("#video").css('display', 'none');
+		
 		$("#blackwhite").css({"background" : "white"});
-		$("#blackwhite").fadeIn(200, function(){$("#blackwhite").fadeOut(200)})
+		$("#blackwhite").fadeIn(400, function(){
+			$("#video").css('display', 'none');
+			$("#canvas").css('display', 'block');
+			canvas.width = width;
+			canvas.height = height;
+			var ctx = canvas.getContext('2d');
+			ctx.drawImage(video, 0, 0, width, height);
+			$("#blackwhite").fadeOut(50);
+			
+			// var new_canvas = document.createElement("canvas");
+			// new_canvas.width = width*0.185;
+			// new_canvas.height = height*0.185;
+			// var new_ctx = new_canvas.getContext('2d');
+			// var num_canvas = parseInt($("input[name='times']").val());
+			// new_ctx.drawImage(video, 0, 0, 0.185*width, (0.185)*height);
+			// $(new_canvas).addClass("side_canvas");
+			// var image = new Image();
+			var img = document.createElement("img");
+			$(img).height("20%");
+			var filterstring = filtersToString({});
+			$(img).attr("filterstring", filterstring);
+			var index = $("#filmstrip img").length;
+			new_src = canvas.toDataURL("image/png");
+			img.src = new_src;
+			original_images_src.push(new_src);
+			imageFilters.push({});
+			$(img).on("click", function(event){
+				$("#canvas").removeAttr("data-caman-id");
+				delete caman;
+				var tempImg = document.createElement('img');
+				tempImg.src = original_images_src[index];
+				ctx.drawImage(tempImg, 0, 0);
+				$(canvas).attr("index", index);
+				caman = Caman("#canvas", function(){
+					restoreImageFilter();
+				});
+			});
+			document.getElementById("filmstrip").appendChild(img);
+		});
 		$(".Filter").css("display", $("#settings").width() == 300 ? "block" : "none");
 		
 		// Capture Image from Video and Write to Canvas
-		canvas.width = width;
-		canvas.height = height;
-		var ctx = canvas.getContext('2d');
-		ctx.drawImage(video, 0, 0, width, height);
-		
-		// var new_canvas = document.createElement("canvas");
-		// new_canvas.width = width*0.185;
-		// new_canvas.height = height*0.185;
-		// var new_ctx = new_canvas.getContext('2d');
-		// var num_canvas = parseInt($("input[name='times']").val());
-		// new_ctx.drawImage(video, 0, 0, 0.185*width, (0.185)*height);
-		// $(new_canvas).addClass("side_canvas");
-		// var image = new Image();
-		var img = document.createElement("img");
-		$(img).height("20%");
-		var filterstring = filtersToString({});
-		$(img).attr("filterstring", filterstring);
-		var index = $("#filmstrip img").length;
-		new_src = canvas.toDataURL("image/png");
-		img.src = new_src;
-		original_images_src.push(new_src);
-		imageFilters.push({});
-		$(img).on("click", function(event){
-			$("#canvas").removeAttr("data-caman-id");
-			delete caman;
-			var tempImg = document.createElement('img');
-			tempImg.src = original_images_src[index];
-			ctx.drawImage(tempImg, 0, 0);
-			$(canvas).attr("index", index);
-			caman = Caman("#canvas", function(){
-				restoreImageFilter();
-			});
-		});
-		document.getElementById("filmstrip").appendChild(img);
+			
 	}
 
 	function goBack() {
 		delete data;
 		$("#blackwhite").css({"background" : "black"});
 		$("#blackwhite").fadeIn(200, function(){
-			$("#camera").css({"box-shadow" : "5px 5px 10px #333333"});
+			// $("#camera").css({"border" : "15px solid black"});
 			$("#blackwhite").fadeOut(200);
 			$("#video").css("display", "block");
 			$("#canvas").css("display", "none");
@@ -254,7 +259,7 @@ $(document).ready(function() {
 			$("#settings_menu").css({"color" : "white"});
 			$(".pre-photo_button").css("display", "inline-block");
 			$(".post-photo_button").css("display", "none");
-			$("#settings_button").css({"width" : "50px"});
+			// $("#settings_button").css({"width" : "200px"});
 			$("#email_form").modal('hide');
 			$(".editor").hide();
 			$(".setting").show();
