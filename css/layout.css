@@ -108,7 +108,7 @@ input[type='checkbox'] {
 
 .pre-photo_button {
 	height: 50px;
-	width : 200px;
+	width : 50px;
 	display : none;
 	margin : auto;
 	margin-top: 10px;
@@ -124,7 +124,7 @@ input[type='checkbox'] {
 
 .post-photo_button {
 	height: 50px;
-	width : 140px;
+	width : 50px;
 	display : none;
 	margin-top: 10px;
 	margin-right:20px;
