@@ -140,7 +140,7 @@ $(document).ready(function() {
 		
 		// Other Initial Display Initializers
 		$("#start_button").css("display", "inline-block");
-		$("#settings_button").css({"display" : "inline-block", "height" : "50px", "width" : "200px"});
+		$("#settings_button").css({"display" : "inline-block", "height" : "50px", "width" : "50px"});
 		$("#camera").css({"border" : "15px solid black"});
 		
 		if (!streaming) {
