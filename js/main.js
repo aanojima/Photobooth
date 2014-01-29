@@ -182,6 +182,8 @@ $(document).ready(function() {
 			$("#settings_button").css({"width" : "110px", "height" : "50px"});
 			$(".post-photo_button").css("display", "inline-block");
 			$(canvas).attr("index", $("#filmstrip img").length - 1);
+			$(".setting").hide();
+			$(".editor").show();
 			caman = Caman("#canvas");
 		}
 		else { 
@@ -201,8 +203,6 @@ $(document).ready(function() {
 		$("#video").css('display', 'none');
 		$("#blackwhite").css({"background" : "white"});
 		$("#blackwhite").fadeIn(200, function(){$("#blackwhite").fadeOut(200)})
-		$(".setting").hide();
-		$(".editor").show();
 		$(".Filter").css("display", $("#settings").width() == 300 ? "block" : "none");
 		
 		// Capture Image from Video and Write to Canvas
@@ -276,6 +276,23 @@ $(document).ready(function() {
 		}
 	}
 
+	function createFilmstripData(){
+		var output_canvas = document.createElement("canvas");
+		var images = $("#filmstrip img").toArray();
+		output_canvas.height = (images.length) * canvas.height + (images.length+1)*15;
+		output_canvas.width = canvas.width + 2*15;
+		var context = output_canvas.getContext('2d');
+		context.fillStyle = "#FFFFFF";
+		context.fillRect(0, 0, output_canvas.width, output_canvas.height);
+		for (var i in images){
+			i = parseInt(i);
+			var image = images[i];
+			console.log(i, canvas.height, 15*(i+1) + i*canvas.height);
+			context.drawImage(image, 15, 15*(i+1) + i*canvas.height);
+		}
+		return output_canvas.toDataURL('image/png');
+	}
+
 	function inputEmail() {
 		$("#modal-email").modal('show');
 		// $('body').append($('<div id="lightbox-shadow"/>'))
@@ -297,7 +314,7 @@ $(document).ready(function() {
 		$.ajax({
 			type : "POST",
 			url : "php/send.php",
-			data : {image : canvas.toDataURL('image/png'), address : email}, 
+			data : {image : createFilmstripData(), address : email}, 
 			success : function(response){
 				console.log(response);
 				//add notification
@@ -342,7 +359,7 @@ $(document).ready(function() {
 				$.ajax({
 					method : "POST",
 					url : "php/create_image_file.php",
-					data : {"image" : canvas.toDataURL('image/png')},
+					data : {"image" : createFilmstripData()},
 					success : function(result){
 						var filename = result;
 						var path = "http://aanojima.scripts.mit.edu/photobooth/php/" + filename;
