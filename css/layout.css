@@ -129,6 +129,17 @@ input[type='checkbox'] {
 	margin-right:20px;
 }
 
+#facebook_button{
+	width: 50px;
+}
+
+#twitter_button{
+	width: 50px;
+}
+
+#send_button{
+	width: 50px;
+}
 
 /* Email form 
 ===============
