@@ -34,7 +34,7 @@ if (isset($_POST["image"]) && isset($_POST["address"]) && !empty($_POST["image"]
 	$mail->AddEmbeddedImage($filename, 'photo', $filename);
 
 	//Read an HTML message body from an external file, convert referenced images to embedded, convert HTML into a basic plain-text alternative body
-	$message = '<h2>Thanks for stopping by the Techfair Photobooth!</h2>';
+	$message = '<link href="http://fonts.googleapis.com/css?family=Roboto" rel='stylesheet' type='text/css'><h2 style="font-family: 'Roboto';">Thanks for stopping by the Techfair Photobooth!</h2>';
 	$mail->AltBody = $message;
 	$message.='<p>Here is your picture:</p><img alt="picture" src="cid:photo" width="400"/>';
 	$mail->Body = $message;
